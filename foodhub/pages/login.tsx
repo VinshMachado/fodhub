@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 const index = () => {
+  //make hide or show pass//
   const [show, setshow] = useState(true);
-
   const changeshow = () => {
     setshow(!show);
+  };
+
+  //set pass and gmail////
+  const [pass, setpass] = useState("");
+  const [gmail, setgmail] = useState("");
+
+  const handelchange = (event: ChangeEvent<HTMLInputElement>) => {
+    setpass(event.target.value);
+  };
+  const gmailchange = (event: ChangeEvent<HTMLInputElement>) => {
+    setgmail(event.target.value);
+  };
+
+  const user = {
+    gmail: "",
+    password: "",
+  };
+  const logindetail = () => {
+    user.gmail = gmail;
+    user.password = pass;
+    console.log(user);
   };
 
   return (
@@ -15,11 +36,14 @@ const index = () => {
         </b>
 
         <input
+          id="gmailfield"
+          onChange={gmailchange}
           type="email"
           placeholder="Email"
           className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2 m-1 flex-col w-96 h-10 rounded-lg hover:border-gray-50"
         ></input>
         <input
+          onChange={handelchange}
           type={show ? "type" : "password"}
           placeholder="Password"
           className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg  hover:border-gray-50"
@@ -36,7 +60,10 @@ const index = () => {
             Forgot Password?
           </a>
         </div>
-        <button className="bg-blue-500 w-96 h-10 rounded-lg my-1 font-bold text-white hover:bg-blue-400">
+        <button
+          className="bg-blue-500 w-96 h-10 rounded-lg my-1 font-bold text-white hover:bg-blue-400"
+          onClick={logindetail}
+        >
           Login
         </button>
         <h2>
