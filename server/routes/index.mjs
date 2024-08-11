@@ -5,6 +5,8 @@ import bodyParser from "body-parser";
 import { check,body, validationResult } from 'express-validator'
 import { User } from '../mongoose/userDetails';
 import bcrypt from 'bcrypt';
+import cookieParser from 'cookie-parser';
+router.use(cookieParser())
 
 const storage=multer.diskStorage({
     destination:(request,file,cb)=>{
@@ -35,6 +37,8 @@ router.post('/login',
     else{
         try{
             await added.save()
+            response.cookie("logged","true",{maxAge:6000})
+            console.log(request.cookies)
             response.json({result:"true"})
             }
         catch(error){
@@ -46,7 +50,11 @@ router.post('/login',
 router.get('/login',async(request,response)=>{
     const details={"usernameOrEmail":request.query.usernameOrEmail,"password":request.query.password}
    const result=await checklogin(details)
-   response.json(result)
+   if(result.success==true){
+      response.cookie("logged","true",{maxAge:6000})
+      console.log(request.cookies)
+      response.json(result)
+   }
 })
 
 router.post('/login/forgotpassword',(request,response)=>{

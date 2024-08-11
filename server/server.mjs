@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import dotenv from 'dotenv';
 import indexRouter from "./routes/index.mjs";
+import cookieParser from "cookie-parser";
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app=express();
-
+app.use(cookieParser())
 app.use('/',indexRouter)
 
 app.listen(process.env.PORT)
