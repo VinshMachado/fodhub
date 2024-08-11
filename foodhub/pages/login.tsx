@@ -3,19 +3,19 @@ import React from "react";
 const index = () => {
   return (
     <div className="h-full w-full flex justify-center align-middle">
-      <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center my-52 h-[25rem] w-[39rem] shadow-2xl ">
+      <div className=" flex flex-col bg-black rounded-sm  items-center justify-center my-80  ">
         <b>
           <h1 className="text-xl">LOGIN</h1>
         </b>
         <input
           type="email"
           placeholder="Email"
-          className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2 m-1 flex-col w-96 h-10 rounded-lg hover:border-gray-50"
+          className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2 m-1 flex-col w-96 h-10 rounded-lg"
         ></input>
         <input
           type="text"
           placeholder="Password"
-          className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg  hover:border-gray-50"
+          className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg "
         ></input>
         <div className="flex ">
           <input type="checkbox" placeholder="Password"></input>{" "}
@@ -25,12 +25,12 @@ const index = () => {
             forgot password?
           </a>
         </div>
-        <button className="bg-blue-500 w-96 h-10 rounded-lg my-1 font-bold text-white hover:bg-blue-400">
+        <button className="bg-blue-500 w-96 h-10 rounded-lg my-1 font-bold text-white">
           LOGIN
         </button>
         <h2>
           dont have an account?
-          <a href="www.youtube.com" className="text-blue-50">
+          <a href="www.youtube.com" className="text-blue-500">
             {" "}
             sign up
           </a>
