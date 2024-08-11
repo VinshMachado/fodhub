@@ -1,3 +1,5 @@
+import { url } from "inspector";
+
 import React, { ChangeEvent, useState } from "react";
 
 const index = () => {
@@ -19,18 +21,33 @@ const index = () => {
   };
 
   const user = {
-    gmail: "",
+    usernameOrEmail: "",
     password: "",
   };
-  const logindetail = () => {
-    user.gmail = gmail;
+
+  //sending data to backend //
+  const Senddata = async () => {
+    const responce = await fetch("url", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await responce.json();
+    console.log(data);
+  };
+  //accepting details//
+  const logindetail = async () => {
+    user.usernameOrEmail = gmail;
     user.password = pass;
     console.log(user);
+    Senddata();
   };
 
   return (
     <div className="h-screen w-full flex justify-center bg-slate-600 items-center">
-      <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-3/6 shadow-[#312f2f] shadow-xl ">
+      <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-auto shadow-[#312f2f] shadow-xl ">
         <b>
           <h1 className="text-xl font-serif">Login</h1>
         </b>
