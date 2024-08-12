@@ -46,6 +46,7 @@ const home = () => {
           </div>
         </form>
       </div>
+      
     </div>
   );
 };
