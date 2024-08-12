@@ -29,7 +29,7 @@ const signup = () => {
   };
 
   return (
-    <div className="h-screen w-full flex justify-center bg-slate-600 items-center">
+    <div className="h-screen w-full flex justify-center  bg-slate-900 items-center">
       <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-3/6 shadow-[#312f2f] shadow-xl ">
         <b>
           <h1 className="text-xl font-serif">Signup</h1>
@@ -48,7 +48,7 @@ const signup = () => {
           placeholder="Create Password"
           className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg  hover:border-gray-50"
         ></input>
-         <input
+        <input
           onChange={handelchange}
           type={show ? "type" : "password"}
           placeholder="Confirm Password"
@@ -61,7 +61,6 @@ const signup = () => {
             placeholder="Password"
           ></input>{" "}
           <label className="mx-1 ">Show Password</label>{" "}
-        
         </div>
         <button
           className="bg-blue-500 w-96 h-10 rounded-lg my-1 font-bold text-white hover:bg-blue-400"
