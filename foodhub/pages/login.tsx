@@ -1,8 +1,17 @@
 import { url } from "inspector";
 
 import React, { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { Router } from "lucide-react";
 
 const index = () => {
+  //config routing///
+  const router = useRouter();
+
+  const navigateTohome = () => {
+    router.push("/");
+  };
+
   //make hide or show pass//
   const [show, setshow] = useState(false);
   const changeshow = () => {
@@ -29,7 +38,7 @@ const index = () => {
   const Senddata = async () => {
     try {
       const responce = await fetch(
-        `http://localhost:5000/loginlogin?usernameOrEmail=${user.usernameOrEmail}&password=${user.password}`,
+        `http://localhost:5000/login?usernameOrEmail=${user.usernameOrEmail}&password=${user.password}`,
         {
           method: "GET",
           headers: {
@@ -40,6 +49,12 @@ const index = () => {
       const data = await responce.json();
       if (responce.ok) {
         console.log(data);
+        console.log(data.success);
+      } else {
+        console.log(data);
+      }
+      if (data.success == true) {
+        navigateTohome();
       }
     } catch (er) {
       console.log("error found" + er);
@@ -55,7 +70,7 @@ const index = () => {
   };
 
   return (
-    <div className="h-screen w-full flex justify-center bg-slate-900 items-center">
+    <div className="h-screen w-screen flex justify-center bg-slate-900 items-center">
       <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-auto shadow-[#312f2f] shadow-xl ">
         <b>
           <h1 className="text-xl font-serif">Login</h1>

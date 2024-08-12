@@ -1,14 +1,22 @@
 import React, { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
 
 const signup = () => {
+  const router = useRouter();
+
+  const navigateTohome = () => {
+    router.push("/");
+  };
+
   //make hide or show pass//
-  const [show, setshow] = useState(true);
+  const [show, setshow] = useState(false);
   const changeshow = () => {
     setshow(!show);
   };
 
   //set pass and gmail////
   const [pass, setpass] = useState("");
+  const [confirmpass, setconfirmpass] = useState("");
   const [gmail, setgmail] = useState("");
 
   const handelchange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -18,19 +26,32 @@ const signup = () => {
     setgmail(event.target.value);
   };
 
+  const getconfirmpass = (event: ChangeEvent<HTMLInputElement>) => {
+    setconfirmpass(event.target.value);
+  };
   const user = {
     gmail: "",
     password: "",
+    confirmpass: "",
   };
+  //getting details//
   const logindetail = () => {
     user.gmail = gmail;
     user.password = pass;
-    console.log(user);
+    user.confirmpass = confirmpass;
+    if (user.password == user.confirmpass && user.gmail != "") {
+      console.log(user);
+      router.push("/");
+    } else if (user.gmail == "") {
+      alert("please enter gmail");
+    } else {
+      alert("password  and confirm password are not same ");
+    }
   };
 
   return (
     <div className="h-screen w-full flex justify-center  bg-slate-900 items-center">
-      <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-3/6 shadow-[#312f2f] shadow-xl ">
+      <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-auto shadow-[#312f2f] shadow-xl ">
         <b>
           <h1 className="text-xl font-serif">Signup</h1>
         </b>
@@ -49,17 +70,13 @@ const signup = () => {
           className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg  hover:border-gray-50"
         ></input>
         <input
-          onChange={handelchange}
+          onChange={getconfirmpass}
           type={show ? "type" : "password"}
           placeholder="Confirm Password"
           className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2  m-1 flex-col w-96 h-10 rounded-lg  hover:border-gray-50"
         ></input>
         <div className="flex pr-60">
-          <input
-            type="checkbox"
-            onClick={changeshow}
-            placeholder="Password"
-          ></input>{" "}
+          <input type="checkbox" onClick={changeshow}></input>{" "}
           <label className="mx-1 ">Show Password</label>{" "}
         </div>
         <button
