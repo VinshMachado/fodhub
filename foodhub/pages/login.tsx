@@ -4,7 +4,7 @@ import React, { ChangeEvent, useState } from "react";
 
 const index = () => {
   //make hide or show pass//
-  const [show, setshow] = useState(true);
+  const [show, setshow] = useState(false);
   const changeshow = () => {
     setshow(!show);
   };
@@ -27,7 +27,7 @@ const index = () => {
 
   //sending data to backend //
   const Senddata = async () => {
-    const responce = await fetch("url", {
+    const responce = await fetch("http://localhost:5000/login", {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -37,16 +37,17 @@ const index = () => {
     const data = await responce.json();
     console.log(data);
   };
+
   //accepting details//
   const logindetail = async () => {
     user.usernameOrEmail = gmail;
     user.password = pass;
     console.log(user);
-    Senddata();
+    await Senddata();
   };
 
   return (
-    <div className="h-screen w-full flex justify-center bg-slate-600 items-center">
+    <div className="h-screen w-full flex justify-center bg-slate-900 items-center">
       <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-auto shadow-[#312f2f] shadow-xl ">
         <b>
           <h1 className="text-xl font-serif">Login</h1>
