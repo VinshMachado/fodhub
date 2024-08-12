@@ -6,6 +6,7 @@ import { check,body, validationResult } from 'express-validator'
 import { User } from '../mongoose/userDetails';
 import bcrypt from 'bcrypt';
 import cookieParser from 'cookie-parser';
+
 router.use(cookieParser())
 
 const storage=multer.diskStorage({
