@@ -46,7 +46,27 @@ const home = () => {
           </div>
         </form>
       </div>
-      
+      <div>
+        <div className="bg-black w-[17rem] h-screen pl-5 pt-12 text-white">
+          <div className="rounded flex flex-col space-y-10">
+            <button className="bg-zinc-950 w-[13rem] h-10 rounded-lg my-1 font-bold hover:text-black hover:bg-white">
+              home
+            </button>
+            <button className="bg-zinc-950 w-[13rem] h-10 rounded-lg my-1 font-bold hover:bg-white hover:text-black">
+              shop
+            </button>
+            <button className="bg-zinc-950 w-[13rem] h-10 rounded-lg my-1 font-bold hover:bg-white hover:text-black">
+              location
+            </button>
+            <button className="bg-zinc-950 w-[13rem] h-10 rounded-lg my-1 font-bold hover:bg-white hover:text-black">
+              you
+            </button>
+            <button className="bg-zinc-950 w-[13rem] h-10 rounded-lg my-1 font-bold hover:bg-white hover:text-black">
+              logout
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
