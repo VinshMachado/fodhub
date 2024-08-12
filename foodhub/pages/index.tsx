@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <h1>Home Page</h1>
-      <button onClick={navigateToAbout}>Go to About Page</button>
+      <button onClick={navigateToAbout}>Login</button>
     </div>
   );
 };
