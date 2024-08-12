@@ -27,15 +27,23 @@ const index = () => {
 
   //sending data to backend //
   const Senddata = async () => {
-    const responce = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await responce.json();
-    console.log(data);
+    try {
+      const responce = await fetch(
+        `http://localhost:5000/loginlogin?usernameOrEmail=${user.usernameOrEmail}&password=${user.password}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await responce.json();
+      if (responce.ok) {
+        console.log(data);
+      }
+    } catch (er) {
+      console.log("error found" + er);
+    }
   };
 
   //accepting details//
