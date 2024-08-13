@@ -9,15 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@iconify/react": "^5.0.2",
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.3.24",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
-    "tailwind-merge": "^2.5.1"
-=======
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.427.0",
@@ -26,7 +17,6 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.5.1",
     "tailwindcss-animate": "^1.0.7"
->>>>>>> 994eec5a1849ffe19c1988943babbc6de727e07a
   },
   "devDependencies": {
     "@types/node": "^20",
