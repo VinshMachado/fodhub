@@ -2,8 +2,8 @@ import React from "react";
 
 const home = () => {
   return (
-    <div className="h-screen w-screen  flex bg-gray-800">
-      <div className=" hidden bg-black w-72 flex items-center m-1  justify-center h-auto rounded-sm  text-white sm:block ">
+    <div className="h-screen w-screen  flex bg-gray-400">
+      <div className=" hidden bg-white w-72 flex items-center   justify-center h-auto   text-white sm:block ">
         <div className="rounded flex flex-col items-center justify-center space-y-10 mt-48">
           <button className="bg-zinc-950  w-[13rem] h-10 rounded-lg my-1 font-bold hover:text-black hover:bg-white">
             home
@@ -24,7 +24,7 @@ const home = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-950 h-16 w-full  m-1 flex items-center justify-center rounded-sm">
+      <div className="bg-white h-16 w-full   flex items-center justify-center ">
         <form className="w-1/2  sm:w-1/2 mt-1">
           <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
             Search
@@ -67,7 +67,6 @@ const home = () => {
           </div>
         </form>
       </div>
-      <div></div>
     </div>
   );
 };
