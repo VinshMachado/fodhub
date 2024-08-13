@@ -64,11 +64,7 @@ router.get("/login", async (request, response) => {
     password: request.query.password,
   };
   const result = await checklogin(details);
-  if (result.success == true) {
-    response.cookie("logged", "true", { maxAge: 6000 });
-    console.log(result);
-    response.json(result);
-  }
+  response.json(result)
 });
 
 router.post("/login/forgotpassword", (request, response) => {});
@@ -90,7 +86,8 @@ async function checklogin(credentials) {
     });
 
     if (!user) {
-      return { success: false, message: "User not found" };
+      return { success: false, message: "User not found",
+    machado_message:"this error means either username or email is wrong" };
     }
 
     // Compare passwords
