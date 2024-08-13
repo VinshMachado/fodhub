@@ -29,6 +29,8 @@ const signup = () => {
   const getconfirmpass = (event: ChangeEvent<HTMLInputElement>) => {
     setconfirmpass(event.target.value);
   };
+
+  //user object//
   const user = {
     gmail: "",
     password: "",
