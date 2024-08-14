@@ -6,8 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Profilething from "@/components/ui/profilething";
-import Modal from "@/components/ui/model";
 
 const Home = () => {
   const [expand, setExpand] = useState(true);
@@ -40,6 +38,7 @@ const Home = () => {
 
   return (
     <div className="h-screen w-screen bg-white flex">
+      {/* side bar */}
       <div className={`${size}`}>
         <div
           className="flex justify-start w-[32px] ml-5 pt-5 hover:text-slate-400 cursor-pointer"

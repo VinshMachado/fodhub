@@ -18,12 +18,16 @@ const signup = () => {
   const [pass, setpass] = useState("");
   const [confirmpass, setconfirmpass] = useState("");
   const [gmail, setgmail] = useState("");
+  const [username, setuser] = useState("");
 
   const handelchange = (event: ChangeEvent<HTMLInputElement>) => {
     setpass(event.target.value);
   };
   const gmailchange = (event: ChangeEvent<HTMLInputElement>) => {
     setgmail(event.target.value);
+  };
+  const userchange = (event: ChangeEvent<HTMLInputElement>) => {
+    setuser(event.target.value);
   };
 
   const getconfirmpass = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,14 +39,33 @@ const signup = () => {
     gmail: "",
     password: "",
     confirmpass: "",
+    username: "",
+  };
+
+  //post thing//
+  const sendlogin = async () => {
+    let responce = await fetch(`http://localhost:5000/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    if (responce.ok) {
+      console.log("data sent ");
+    } else {
+      console.log("data not sent");
+    }
   };
   //getting details//
   const logindetail = () => {
     user.gmail = gmail;
     user.password = pass;
     user.confirmpass = confirmpass;
+    user.username = username;
     if (user.password == user.confirmpass && user.gmail != "") {
       console.log(user);
+      sendlogin();
       router.push("/");
     } else if (user.gmail == "") {
       alert("please enter gmail");
@@ -57,6 +80,13 @@ const signup = () => {
         <b>
           <h1 className="text-xl font-serif">Signup</h1>
         </b>
+        <input
+          id="gmailfield"
+          onChange={userchange}
+          type="email"
+          placeholder="Username"
+          className="border-gray-600 placeholder:text-gray-600 pl-[14px] border-2 m-1 flex-col w-96 h-10 rounded-lg hover:border-gray-50"
+        ></input>
 
         <input
           id="gmailfield"
