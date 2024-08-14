@@ -2,7 +2,6 @@ import { url } from "inspector";
 
 import React, { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
-import { Router } from "lucide-react";
 
 const index = () => {
   //config routing///

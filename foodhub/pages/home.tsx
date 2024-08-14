@@ -160,7 +160,7 @@ const Home = () => {
       </div>
 
       {/* Main content area */}
-      <div className="flex-1 bg-gray-100">
+      <div className="flex flex-col  w-full items-center">
         <div className="bg-orange-400 h-16 w-full flex items-center justify-center">
           <form className="w-1/2 sm:w-1/2 mt-1">
             <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
@@ -236,7 +236,7 @@ const Home = () => {
         </div>
 
         {/* New "Hello" div */}
-        <div className=" w-full top-16 bg-slate-500 p-4">
+        <div className="mt-5 rounded-sm w-11/12 top-16 bg-slate-500 p-4">
           <div className="text-4xl font-bold">
             <Carousel>
               <CarouselContent>
