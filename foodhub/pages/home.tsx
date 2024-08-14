@@ -7,6 +7,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import Modal from "@/components/ui/model";
+
 const Home = () => {
   const [expand, setExpand] = useState(true);
   const [size, setSize] = useState(
