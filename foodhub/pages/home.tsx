@@ -248,8 +248,8 @@ const Home = () => {
         <div className="mt-5 h-56 flex justify-center items-end rounded-sm w-11/12  top-16 bg-slate-500 p-4">
           <div className="h-full  w-11/12 text-4xl font-bold">
             <Carousel className="h-full flex items-end">
-              <CarouselContent className=" flex items-end justify-center">
-                <CarouselItem>raul</CarouselItem>
+              <CarouselContent className="text-white">
+                <CarouselItem>raul </CarouselItem>
                 <CarouselItem>is</CarouselItem>
                 <CarouselItem>gay</CarouselItem>
               </CarouselContent>
