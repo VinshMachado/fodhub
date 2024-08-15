@@ -1,3 +1,4 @@
+//import STATEMENTS
 import express, { Router, query, request, response } from "express";
 const router = Router();
 import multer from "multer";
@@ -7,13 +8,19 @@ import { User } from "../mongoose/userDetails";
 import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv';
 
+
+//middleware to use
 router.use(cors());
 router.use(cookieParser());
 
+
+//this stuff is for multer
 const storage = multer.diskStorage({
   destination: (request, file, cb) => {
-    cb(null, "/vapour/public/images");
+    cb(null, "/fodhub/server/public");
   },
   filename: (request, file, cb) => {
     const uniqueName = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -25,6 +32,7 @@ const upload = multer({ storage: storage });
 router.use(express.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+//post request for signing up
 router.post(
   "/login",
   body("username")
@@ -48,9 +56,10 @@ router.post(
     } else {
       try {
         await added.save();
-        response.cookie("logged", "true", { maxAge: 6000 });
-        console.log(request.cookies);
-        response.json({ result: "true" });
+        const newUser=await User.findOne(added)
+        const payload={_id:newUser._id,username:newUser.username}
+        const token=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'10m'})
+        response.json({ result:true,newUser,token});
       } catch (error) {
         response.send(error);
       }
@@ -58,14 +67,27 @@ router.post(
   }
 );
 
-router.get("/login", async (request, response) => {
+
+//get request for logging in
+router.get("/login",async (request, response) => {
   const details = {
     usernameOrEmail: request.query.usernameOrEmail,
     password: request.query.password,
   };
   const result = await checklogin(details);
+  if(result.success==true){
+    console.log(process.env.ACCESS_TOKEN_SECRET)
+    const ACCESS_TOKEN_SECRET=process.env.ACCESS_TOKEN_SECRET
+    const payload={_id:result.user._id,
+    username:result.user.username}
+    const token=jwt.sign(payload,ACCESS_TOKEN_SECRET,{expiresIn:"10m"})
+    return response.json({result,token})
+  }
+ else{
   response.json(result)
+ }
 });
+
 
 router.post("/login/forgotpassword", (request, response) => {});
 
@@ -75,6 +97,8 @@ async function hashPassword(password) {
   const hash = await bcrypt.hash(password, saltRounds);
   return hash;
 }
+
+
 
 async function checklogin(credentials) {
   const { usernameOrEmail, password } = credentials;
@@ -104,4 +128,20 @@ async function checklogin(credentials) {
   }
 }
 
+
+
+
+function authenticateToken(request,response,next){
+  const authHeader=request.headers['authorization']
+  const token=authHeader && authHeader.split(' ')[1]
+  if(token==null)
+  return response.sendStatus(401).send("user doesnt have access")
+
+  jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
+    if(err)return response.sendStatus(403).send("token expired")
+    next()
+  })  
+}
+
+//exporting the router to server.mjs
 export default router;
