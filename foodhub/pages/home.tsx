@@ -62,7 +62,7 @@ const Home = () => {
         </div>
 
         <div className="rounded  flex flex-col items-center justify-center space-y-10 mt-20 ">
-          {/* Large Icon in the Middle */}
+          {/* humungus Icon in the Middle */}
           <div className="w-full flex justify-center items-baseline mb-8 -mt-8">
             <svg
               xmlns="http://www.w3.org/2000/svg"
