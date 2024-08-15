@@ -1,5 +1,3 @@
-import { url } from "inspector";
-
 import React, { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -72,7 +70,7 @@ const index = () => {
     <div className="h-screen w-screen flex justify-center bg-slate-900 items-center">
       <div className=" flex flex-col bg-gray-500 rounded-lg  items-center justify-center  h-4/5 w-auto shadow-[#312f2f] shadow-xl ">
         <b>
-          <h1 className="text-xl font-serif">Login</h1>
+          <h1 className="text-2xl font-bold">Login</h1>
         </b>
 
         <input

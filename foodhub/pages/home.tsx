@@ -183,7 +183,7 @@ const Home = () => {
       {/* Main content area */}
       <div className="flex flex-col  w-full items-center">
         <div className=" w-full bg-orange-400 h-16 sm:w-full flex items-center justify-center">
-          <form className="w-1/2 sm:w-1/2 mt-1">
+          <form className="ml-10 w-1/2 sm:w-1/2 mt-1">
             <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
               Search
             </label>
@@ -249,9 +249,9 @@ const Home = () => {
           <div className="h-full  w-11/12 text-4xl font-bold">
             <Carousel className="h-full flex items-end">
               <CarouselContent className="text-white">
-                <CarouselItem>raul </CarouselItem>
-                <CarouselItem>is</CarouselItem>
-                <CarouselItem>gay</CarouselItem>
+                <CarouselItem>food </CarouselItem>
+                <CarouselItem>place</CarouselItem>
+                <CarouselItem>price</CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
