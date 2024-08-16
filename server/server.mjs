@@ -24,7 +24,6 @@ const corsoption={
 };
 
 
-
 app.use(cookieParser())
 app.use('/',indexRouter)
 app.use(cors(corsoption))
