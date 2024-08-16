@@ -84,7 +84,10 @@ router.get("/login",async (request, response) => {
     const payload={_id:result.user._id,
     username:result.user.username}
     const token=jwt.sign(payload,ACCESS_TOKEN_SECRET,{expiresIn:"10m"})
-    return response.json({result,token})
+        response.cookie('authToken',token,{
+          httpOnly:true,sameSite:'strict'
+        })
+    return response.json({result})
   }
  else{
   response.json(result)
