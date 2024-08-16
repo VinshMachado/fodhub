@@ -51,7 +51,7 @@ router.post(
     });
     const result = validationResult(request);
     const hashed = await bcrypt.hash(password, 10);
-    if (result.errors.length != 0) {
+    if (result.errors.length !=0) {
       response.json({ errors: result.errors.map((err) => err.msg) });
     } else {
       try {
@@ -59,7 +59,10 @@ router.post(
         const newUser=await User.findOne(added)
         const payload={_id:newUser._id,username:newUser.username}
         const token=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'10m'})
-        response.json({ result:true,newUser,token});
+        response.cookie('authToken',token,{
+          httpOnly:true,sameSite:'strict'
+        })
+        response.json({ result:true,newUser});
       } catch (error) {
         response.send(error);
       }
@@ -99,7 +102,6 @@ async function hashPassword(password) {
 }
 
 
-
 async function checklogin(credentials) {
   const { usernameOrEmail, password } = credentials;
 
@@ -134,9 +136,10 @@ async function checklogin(credentials) {
 function authenticateToken(request,response,next){
   const authHeader=request.headers['authorization']
   const token=authHeader && authHeader.split(' ')[1]
-  if(token==null)
-  return response.sendStatus(401).send("user doesnt have access")
-
+  if(token==null){
+    const rToken=User.findOne({"username":request.body.username})
+    return response.sendStatus(401).send("user doesnt have access")
+  }
   jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
     if(err)return response.sendStatus(403).send("token expired")
     next()

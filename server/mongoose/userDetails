@@ -22,9 +22,13 @@ const collection=mongoose.Schema({
         type:String,
         trim:true
     },
-    pfp_directory:{
+    rToken:{
         type:String,
         unique:true,
+        expiresAt:{
+            type:Date,
+            expires:120
+        }
     }
 });
 export const User=mongoose.model('details',collection);
