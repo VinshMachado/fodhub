@@ -1,5 +1,6 @@
 import mongoose, { Schema, model } from "mongoose";
 
+<<<<<<< HEAD
 const collection = mongoose.Schema({
   username: {
     type: mongoose.Schema.Types.String,
@@ -25,5 +26,37 @@ const collection = mongoose.Schema({
     type: String,
     trim: true,
   },
+=======
+const collection=mongoose.Schema({
+    username:{
+        type:mongoose.Schema.Types.String,
+        required:true,
+        unique:true,
+    },
+    password:{
+        type:String,
+        required:true,
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+        lowercase:true,
+        trim:true,
+        match: [/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/, 'Please fill a valid email address']
+    },
+    saved:{
+        type:String,
+        trim:true
+    },
+    rToken:{
+        type:String,
+        unique:true,
+        expiresAt:{
+            type:Date,
+            expires:120
+        }
+    }
+>>>>>>> 95f7f16d2aa38526295b2458c45ade19e5829a60
 });
 export const User = mongoose.model("details", collection);
