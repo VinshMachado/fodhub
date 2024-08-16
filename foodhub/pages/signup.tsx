@@ -4,10 +4,6 @@ import { useRouter } from "next/router";
 const signup = () => {
   const router = useRouter();
 
-  const navigateTohome = () => {
-    router.push("/");
-  };
-
   //make hide or show pass//
   const [show, setshow] = useState(false);
   const changeshow = () => {
