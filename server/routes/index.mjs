@@ -5,12 +5,12 @@ import multer from "multer";
 import bodyParser from "body-parser";
 import { check, body, validationResult } from "express-validator";
 import { User } from "../mongoose/userDetails";
+import { RefreashToken } from "../mongoose/userDetails";
 import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv';
-
 
 //middleware to use
 router.use(cors());
@@ -31,6 +31,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 router.use(express.json());
 router.use(bodyParser.urlencoded({ extended: false }));
+
+
 
 //post request for signing up
 router.post(
@@ -57,8 +59,12 @@ router.post(
       try {
         await added.save();
         const newUser=await User.findOne(added)
-        const payload={_id:newUser._id,username:newUser.username}
-        const token=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'10m'})
+        const currentDate=new Date()
+        const expireDate=addDays(currentDate,5).toLocaleDateString()
+        const payload={_id:newUser._id}
+        const token=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'2h'})
+        const rToken=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'5d'})
+        RefreashToken.create({token:rToken,user:payload._id,expiresAt:expireDate})
         response.cookie('authToken',token,{
           httpOnly:true,sameSite:'strict'
         })
@@ -78,12 +84,20 @@ router.get("/login",async (request, response) => {
     password: request.query.password,
   };
   const result = await checklogin(details);
+  const timestamp =Date.now();
   if(result.success==true){
-    console.log(process.env.ACCESS_TOKEN_SECRET)
+    const currentDate=new Date()
+    const expireDate=addDays(currentDate,5).toLocaleDateString()
     const ACCESS_TOKEN_SECRET=process.env.ACCESS_TOKEN_SECRET
-    const payload={_id:result.user._id,
-    username:result.user.username}
-    const token=jwt.sign(payload,ACCESS_TOKEN_SECRET,{expiresIn:"10m"})
+    const payload={_id:result.user._id}
+    const token=jwt.sign(payload,ACCESS_TOKEN_SECRET,{expiresIn:"2h"})
+    const rToken=jwt.sign(payload,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'5d'})
+    if(await RefreashToken.findOne({user:payload})){
+      const userId=await RefreashToken.findOne({user:payload})
+      const deletedUser=await RefreashToken.findByIdAndDelete(userId._id)
+      console.log(deletedUser)
+    }
+    RefreashToken.create({token:rToken,user:payload._id,expiresAt:expireDate})
         response.cookie('authToken',token,{
           httpOnly:true,sameSite:'strict'
         })
@@ -134,20 +148,12 @@ async function checklogin(credentials) {
 }
 
 
-
-
-function authenticateToken(request,response,next){
-  const authHeader=request.headers['authorization']
-  const token=authHeader && authHeader.split(' ')[1]
-  if(token==null){
-    const rToken=User.findOne({"username":request.body.username})
-    return response.sendStatus(401).send("user doesnt have access")
-  }
-  jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
-    if(err)return response.sendStatus(403).send("token expired")
-    next()
-  })  
+function addDays(date,days){
+  const newDate=new Date(date.getTime()+(days*24*60*60*1000))
+  return newDate
 }
+
+
 
 //exporting the router to server.mjs
 export default router;

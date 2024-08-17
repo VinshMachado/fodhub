@@ -9,6 +9,7 @@ import cors from 'cors';
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 const app=express(); 
+import homeRouter from "./routes/home.mjs"
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -26,5 +27,6 @@ const corsoption={
 
 app.use(cookieParser())
 app.use('/',indexRouter)
+app.use('/',homeRouter)
 app.use(cors(corsoption))
 app.listen(process.env.PORT)
