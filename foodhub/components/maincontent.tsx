@@ -6,9 +6,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Profilething from "@/components/ui/Profilething";
-import Modal from "@/components/ui/model";
+
 import Car from "./ui/car";
+
 const maincontent = () => {
   return (
     <div>
