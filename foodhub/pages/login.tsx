@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 
 const index = () => {
   //make hide or show pass//
-  const [show, setshow] = useState(true);
+  const [show, setshow] = useState(false);
   const changeshow = () => {
     setshow(!show);
   };
@@ -25,13 +25,16 @@ const index = () => {
 
   //sending data to backend //
   const Senddata = async () => {
-    const responce = await fetch("url", {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const responce = await fetch(
+      `http://localhost:5000/login?usernameOrEmail=${user.usernameOrEmail}&password=${user.password}`,
+      {
+        method: "GET",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await responce.json();
     console.log(data);
   };
