@@ -17,7 +17,6 @@ const maincontent = () => {
         {/* New "Hello" div */}
 
         <Car />
-
         <div className="mt-5 h-` w-11/12 flex justify-center  items-end rounded-sm  top-16 bg-slate-500 p-4 ">
           <div className="  w-11/12 md:text-4xl font-bold text-lg">
             <Carousel>

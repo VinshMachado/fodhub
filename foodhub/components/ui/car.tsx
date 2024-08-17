@@ -17,8 +17,8 @@ const Car: React.FC = () => {
   };
 
   return (
-    <div className="relative w-11/12 bg-black overflow-hidden">
-      <div className="relative h-56 md:h-80 lg:h-96 overflow-hidden rounded-lg">
+    <div className="relative mt-5 rounded-lg w-11/12 bg-black overflow-hidden">
+      <div className="relative h-[400px] md:h-[34rem]  overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <div
             key={index}
