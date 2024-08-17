@@ -1,4 +1,4 @@
-import mongoose, { Schema,model, mongo} from "mongoose";
+import mongoose, { Schema, model, mongo } from "mongoose";
 
 const collection = mongoose.Schema({
   username: {
@@ -28,21 +28,24 @@ const collection = mongoose.Schema({
 });
 
 const refreshTokenSchema = new mongoose.Schema({
-    token: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    expiresAt: {
-      type: Date,
-      required: true,
-      index: { expires: 432000 } // Adjust expiration time as needed
-    },
-  });
-export const User=mongoose.model('details',collection);
-export const RefreashToken=mongoose.model('RefreashToken',refreshTokenSchema);
+  token: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  expiresAt: {
+    type: Date,
+    required: true,
+    index: { expires: 432000 }, // Adjust expiration time as needed
+  },
+});
+export const User = mongoose.model("details", collection);
+export const RefreashToken = mongoose.model(
+  "RefreashToken",
+  refreshTokenSchema
+);
