@@ -1,9 +1,22 @@
 import React from "react";
 import Profilething from "./Profilething";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { CheckboxItem } from "@radix-ui/react-dropdown-menu";
+import MenuCheckbox from "./checkbox";
 
 export const Searchbar = () => {
   return (
     <div className=" w-full bg-orange-400 h-16 sm:w-full flex items-center justify-center">
+      <div>
+        <MenuCheckbox />
+      </div>
       <form className="ml-10 w-1/2 sm:w-1/2 mt-1">
         <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
           Search
@@ -18,7 +31,7 @@ export const Searchbar = () => {
               placeholder="Search"
               required
             />
-            <div className="pt-1">
+            <div className="pt-1.5">
               <button
                 type="submit"
                 className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full border-2 text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -43,8 +56,7 @@ export const Searchbar = () => {
           </div>
         </div>
       </form>
-
-      <div className="flex items-center text-white">
+      <div className="flex items-center justify-end  text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

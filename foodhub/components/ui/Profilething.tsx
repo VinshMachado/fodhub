@@ -10,14 +10,14 @@ const Profilething: React.FC = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <div className="flex items-center justify-center  bg-orange-400">
+    <div className="  bg-orange-400">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        className="w-8 h-8 mx-4 cursor-pointer text-white hover:text-slate-400"
+        className="w-8 h-8 mx-4 cursor-pointer  text-white hover:text-slate-400"
         onClick={openModal}
       >
         <path
