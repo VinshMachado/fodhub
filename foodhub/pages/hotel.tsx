@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Maincontent from "@/components/maincontent";
+import Car from "@/components/ui/car";
 import {
   Carousel,
   CarouselContent,
@@ -12,20 +13,14 @@ import Modal from "@/components/ui/model";
 
 const Hotel = () => {
   return (
-    <div className="flex flex-col h-screen w-full items-center">
-      <div className="mt-5 h-56 flex justify-center w-11/12 items-center bg-slate-500 p-4 rounded-sm">
-        <div className=" h-full w-11/12 text-4xl font-bold ">
-          <Carousel className="h-full w-full  flex items-end">
-            <CarouselContent className="text-white">
-              <CarouselItem>Food</CarouselItem>
-              <CarouselItem>Place</CarouselItem>
-              <CarouselItem>Price</CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+    <div>
+      <span className="text-4xl font-bold flex justify-center items-center mt-3">
+        bombay lucky
+      </span>
+      <div className="flex justify-center items-center">
+        <Car />
       </div>
+      <div></div>
     </div>
   );
 };

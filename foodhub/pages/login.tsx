@@ -44,8 +44,8 @@ const index = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex justify-center bg-slate-600 items-center p-4 sm:p-0">
-      <div className="flex flex-col bg-gray-500 rounded-lg items-center justify-center h-4/5 shadow-[#312f2f] shadow-xl w-full max-w-md sm:w-full">
+    <div className="h-screen w-full flex justify-center bg-slate-900 items-center p-4 sm:p-0">
+      <div className="flex flex-col bg-gray-500 rounded-lg items-center justify-center h-4/5 shadow-[#312f2f] shadow-xl w-full  sm:w-auto">
         <b>
           <h1 className="text-xl font-serif text-center">Login</h1>
         </b>
@@ -55,13 +55,13 @@ const index = () => {
           onChange={gmailchange}
           type="email"
           placeholder="Email"
-          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-full max-w-md"
+          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-96 max-w-md"
         />
         <input
           onChange={handelchange}
           type={show ? "text" : "password"}
           placeholder="Password"
-          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-full max-w-md"
+          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-96 max-w-md"
         />
         <div className="flex flex-col sm:flex-row items-center">
           <input type="checkbox" onClick={changeshow} className="mr-2" />
@@ -74,7 +74,7 @@ const index = () => {
           </a>
         </div>
         <button
-          className="bg-blue-500 w-full max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
+          className="bg-blue-500 w-96 max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
           onClick={logindetail}
         >
           Login
@@ -88,7 +88,7 @@ const index = () => {
         </h2>
         <h3 className="text-gray-300 text-center">Or</h3>
         <div className="flex flex-col items-center">
-          <button className="flex items-center my-3 h-10 w-full max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+          <button className="flex  justify-center items-center my-3 h-10 w-96 max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
             <svg
               className="h-6 w-6 mr-2"
               xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ const index = () => {
             </svg>
             <span className="text-sm">Sign in with Google</span>
           </button>
-          <button className="flex items-center my-3 h-10 w-full max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+          <button className="flex items-center justify-center  my-3 h-10 w-full max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
             <svg
               className="h-6 w-6 mr-2"
               xmlns="http://www.w3.org/2000/svg"
