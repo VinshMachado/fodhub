@@ -24,9 +24,9 @@ const verifyToken = async (req, res, next) => {
         
         // Extract user ID from decoded token (assuming 'sub' claim holds user ID)
         const userId = extractUserIdFromToken(token);
-        console.log(userId)
+        //console.log(userId)
         const foundToken = await RefreashToken.findOne({ user: userId });
-        console.log(foundToken)
+        //console.log(foundToken)
         if (!foundToken || foundToken.expiresAt < Date.now()) {
           return res.status(401).json({ message: 'Unauthorized: Refreash token expired or doesnt exist',
             machadoMessage:"this means no refresh token so send them to login screen" });

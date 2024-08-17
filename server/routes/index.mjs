@@ -95,7 +95,6 @@ router.get("/login",async (request, response) => {
     if(await RefreashToken.findOne({user:payload})){
       const userId=await RefreashToken.findOne({user:payload})
       const deletedUser=await RefreashToken.findByIdAndDelete(userId._id)
-      console.log(deletedUser)
     }
     RefreashToken.create({token:rToken,user:payload._id,expiresAt:expireDate})
         response.cookie('authToken',token,{
