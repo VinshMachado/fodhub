@@ -4,10 +4,6 @@ import { useRouter } from "next/router";
 const signup = () => {
   const router = useRouter();
 
-  const navigateTohome = () => {
-    router.push("/");
-  };
-
   //make hide or show pass//
   const [show, setshow] = useState(false);
   const changeshow = () => {
@@ -49,10 +45,15 @@ const signup = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user: username, email: gmail, password: pass }),
+      body: JSON.stringify({
+        username: username,
+        email: gmail,
+        password: pass,
+      }),
     });
+    const data = await responce.json();
     if (responce.ok) {
-      console.log("data sent ");
+      console.log(data);
     } else {
       console.log("data not sent");
     }
@@ -66,7 +67,6 @@ const signup = () => {
     if (user.password == user.confirmpass && user.gmail != "") {
       console.log(user);
       sendlogin();
-      router.push("/");
     } else if (user.gmail == "") {
       alert("please enter gmail");
     } else {
