@@ -35,8 +35,8 @@ const Hotel = () => {
             Info about Bombay Lucky
           </div>
         </div>
-        <div className=" mt-6 justify-center flex items-center">
-          <div className="w-11/12 h-80 justify-center flex items-center rounded-lg bg-slate-300 shadow-inner  ">
+        <div className="mt-6 justify-center flex items-center">
+          <div className="w-11/12 h-80 justify-center flex items-center rounded-lg bg-slate-300 shadow-inner">
             <Carousel
               opts={{
                 align: "start",
@@ -63,11 +63,11 @@ const Hotel = () => {
           </div>
         </div>
       </div>
-      <div>
-        <form className="max-w-2xl bg-white rounded-lg border pb-2 mx-auto mt-20">
+      <div className="flex justify-center">
+        <form className="w-11/12 bg-white rounded-lg border pb-2 mt-20">
           <div className="px-3 mb-2 mt-2">
             <textarea
-              placeholder="comment"
+              placeholder="Comment"
               className="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
             ></textarea>
           </div>
