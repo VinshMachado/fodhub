@@ -1,14 +1,6 @@
 import React from "react";
 import Profilething from "./Profilething";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "./button";
+
 import MenuCheckbox from "./checkbox";
 
 export const Searchbar = () => {
@@ -21,10 +13,6 @@ export const Searchbar = () => {
           alt="Logo"
           className="h-10"
         />
-    <div className=" w-full bg-orange-400 h-16 sm:w-full flex items-center justify-center">
-      <Button className="h-12 w-14 bg-orange-400 m-10">☰</Button>
-      <div>
-        <MenuCheckbox />
       </div>
 
       {/* Search Form */}
