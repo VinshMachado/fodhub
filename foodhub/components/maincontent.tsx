@@ -15,10 +15,6 @@ const maincontent = () => {
     <div>
       {/* Main content area */}
       <div className="flex flex-col overflow-x-hidden w-full items-center">
-        <div className=" items-center flex justify-center pt-2 block sm:hidden">
-          <Menu />
-        </div>
-
         {/* New "Hello" div */}
 
         <Car />
