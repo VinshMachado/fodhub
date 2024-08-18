@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "./ui/menu";
 import {
   Carousel,
   CarouselContent,
@@ -6,14 +7,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Profilething from "@/components/ui/Profilething";
-import Modal from "@/components/ui/model";
+
 import Car from "./ui/car";
+
 const maincontent = () => {
   return (
     <div>
       {/* Main content area */}
-      <div className="flex flex-col  w-full items-center">
+      <div className="flex flex-col overflow-x-hidden w-full items-center">
         {/* New "Hello" div */}
 
         <Car />

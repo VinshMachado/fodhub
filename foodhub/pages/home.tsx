@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Maincontent from "@/components/maincontent";
-import { Search } from "lucide-react";
-import Profilething from "@/components/ui/Profilething";
 import { Searchbar } from "@/components/ui/Searchbar";
-
 const Home = () => {
+  // get users current location ///
+  const [userlocation, setuserlocation] = useState({
+    userlongitude: 0,
+    userlatitude: 0,
+  });
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition((pos) => {
+        setuserlocation({
+          userlongitude: pos.coords.latitude,
+          userlatitude: pos.coords.longitude,
+        });
+      });
+    }
+  });
+
+  useEffect(() => {
+    console.log(userlocation);
+  }, [userlocation]);
+
+  //nav bar logic///
+
   const [expand, setExpand] = useState(true);
   const [size, setSize] = useState(
     "snap-center hidden bg-black flex flex-row items-center w-72 justify-center h-auto text-white sm:block"
