@@ -22,7 +22,7 @@ const MenuCheckbox = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="bg-white rounded-lg p-3 flex justify-end items-center hover:bg-slate-400">
+        <button className="bg-orange-300 rounded-lg p-3 flex justify-end items-end hover:bg-slate-400 translate-x-10 border-none">
           Filter
         </button>
       </DropdownMenuTrigger>
