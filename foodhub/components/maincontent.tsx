@@ -71,38 +71,62 @@ const maincontent = () => {
         <div className="pt-3 md:text-4xl text-3xl font-bold">
           North Indian Restraunts
         </div>
-        <div className="mt-4 h-64 w-11/12 flex justify-center items-center  md:text-4xl text-lg rounded-sm  top-16 bg-yellow-700 late-500 p-4">
-          <Carousel>
-            <CarouselContent className="text-white">
-              <CarouselItem className=" basis-1/3 ">
-                north indian 1{" "}
-              </CarouselItem>
-              <CarouselItem className="basis-1/3"> north indian 2</CarouselItem>
-              <CarouselItem className="basis-1/3">north indian 3</CarouselItem>
-              <CarouselItem className="basis-1/3">north indian 4</CarouselItem>
-              <CarouselItem className="basis-1/3"> butter chicken</CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+        <div className="mt-4 h-64 w-11/12 flex justify-center items-center  md:text-4xl text-lg rounded-sm  top-16 bg-orange-700 late-500 p-4">
+          <div className="  w-11/12 font-bold">
+            <Carousel>
+              <CarouselContent className="text-white">
+                <CarouselItem className=" basis-1/3 ">
+                  North Indian Restraunt 1{" "}
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  {" "}
+                  North Indian Restraunt 2
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  North Indian Restraunt 3
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  North Indian Restraunt 4
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  {" "}
+                  butter chicken
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
         </div>
         <div className="pt-3 md:text-4xl text-3xl font-bold">
           South Indian restraunts
         </div>
-        <div className="mt-4 h-64 w-11/12 flex justify-center items-center rounded-sm  md:text-4xl text-lg top-16 bg-black p-4">
-          <Carousel>
-            <CarouselContent className="text-white">
-              <CarouselItem className=" basis-1/3 ">
-                south indian 1{" "}
-              </CarouselItem>
-              <CarouselItem className="basis-1/3"> south indian 2</CarouselItem>
-              <CarouselItem className="basis-1/3">south indian 3</CarouselItem>
-              <CarouselItem className="basis-1/3">south indian 4</CarouselItem>
-              <CarouselItem className="basis-1/3"> butter chicken</CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+        <div className="mt-4 mb-20 h-72 w-11/12 flex justify-center items-center  md:text-4xl text-lg rounded-sm  top-16 bg-black late-500 p-4">
+          <div className="  w-11/12 font-bold">
+            <Carousel>
+              <CarouselContent className="text-white">
+                <CarouselItem className=" basis-1/3 ">
+                  South Indian restraunt 1{" "}
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  {" "}
+                  South Indian restraunt 2
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  South Indian restraunt 3
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  South Indian restraunt 4
+                </CarouselItem>
+                <CarouselItem className="basis-1/3">
+                  {" "}
+                  butter chicken
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
         </div>
       </div>
     </div>

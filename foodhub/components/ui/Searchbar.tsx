@@ -49,12 +49,12 @@ export const Searchbar = () => {
               </svg>
             </button>
           </div>
+          <div className="hidden sm:flex justify-start items-center ">
+            <MenuCheckbox />
+          </div>
         </form>
         <div className="flex items-center space-x-4">
           {/* MenuCheckbox will be hidden on mobile screens */}
-          <div className="hidden sm:flex justify-start items-center -translate-x-10">
-            <MenuCheckbox />
-          </div>
 
           {/* Icons and Profile Section will be hidden on mobile screens */}
           <div className="hidden sm:flex items-center space-x-4 text-white">
@@ -78,7 +78,7 @@ export const Searchbar = () => {
           </div>
         </div>
       </div>
-      <div className="h-14  flex items-center justify-center bg-white   block sm:hidden">
+      <div className="h-14  flex items-center justify-center bg-white  block sm:hidden">
         <Menu />
       </div>
     </div>
