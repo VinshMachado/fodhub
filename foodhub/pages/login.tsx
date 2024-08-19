@@ -72,7 +72,7 @@ const index = () => {
           <label className="mr-5 sm:mr-24">Show Password</label>
           <a
             href="https://www.youtube.com"
-            className="text-sky-500 mt-2 sm:mt-0 sm:ml-4"
+            className="text-blue-800 mt-2 sm:mt-0 sm:ml-4"
           >
             Forgot Password?
           </a>
@@ -85,7 +85,7 @@ const index = () => {
         </button>
         <h2 className="text-center text-white">
           Don’t have an account?
-          <a href="https://www.youtube.com" className="text-sky-500">
+          <a href="https://www.youtube.com" className="text-blue-800">
             {" "}
             Sign up
           </a>

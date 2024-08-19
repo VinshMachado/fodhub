@@ -110,7 +110,7 @@ const signup = () => {
         ></input>
         <div className="flex items-center my-2">
           <input type="checkbox" onClick={changeshow} />
-          <label className="ml-2 text-white">Show Password</label>
+          <label className="ml-2 text-black">Show Password</label>
         </div>
         <button
           className="bg-blue-500 w-72 sm:w-96 max-w-md h-11 sm:h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
@@ -120,7 +120,7 @@ const signup = () => {
         </button>
         <h2>
           Already have an account?
-          <a href="www.youtube.com" className="text-sky-500">
+          <a href="www.youtube.com" className="text-blue-800">
             {" "}
             Login
           </a>
