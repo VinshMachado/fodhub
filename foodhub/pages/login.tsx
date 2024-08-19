@@ -47,51 +47,52 @@ const index = () => {
   };
 
   return (
-    <div className="h-screen w-full flex justify-center bg-slate-900 items-center p-4 sm:p-0">
-      <div className="flex flex-col bg-gray-500 rounded-lg items-center justify-center h-4/5 shadow-[#312f2f] shadow-xl w-full  sm:w-auto">
+    <div className="h-screen w-full bg-[url('/loginBg.jpg')] bg-cover bg-center bg-no-repeat flex justify-center items-center p-4 sm:p-0 bg-opacity-100">
+      <div className="flex flex-col bg-zinc-500 rounded-lg items-center justify-center h-2/3 shadow-[#312f2f] shadow-xl w-full sm:w-auto p-6 ">
         <b>
           <h1 className="text-xl font-serif text-center">Login</h1>
         </b>
-
-        <input
-          id="gmailfield"
-          onChange={gmailchange}
-          type="email"
-          placeholder="Email"
-          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-96 max-w-md"
-        />
+        <div className="py-2">
+          <input
+            id="gmailfield"
+            onChange={gmailchange}
+            type="email"
+            placeholder="Email"
+            className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-72 sm:w-96 max-w-md"
+          />
+        </div>
         <input
           onChange={handelchange}
           type={show ? "text" : "password"}
           placeholder="Password"
-          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-96 max-w-md"
+          className="border-gray-600 placeholder:text-gray-600 pl-3 border-2 m-1 h-10 rounded-lg hover:border-gray-50 w-72 sm:w-96 max-w-md "
         />
-        <div className="flex flex-col sm:flex-row items-center">
+        <div className="flex-row flex-col justify-evenly sm:flex-row items-center">
           <input type="checkbox" onClick={changeshow} className="mr-2" />
-          <label className="mr-2">Show Password</label>
+          <label className="mr-5 sm:mr-24">Show Password</label>
           <a
             href="https://www.youtube.com"
-            className="text-sky-500 mt-2 sm:mt-0 sm:ml-4"
+            className="text-blue-800 mt-2 sm:mt-0 sm:ml-4"
           >
             Forgot Password?
           </a>
         </div>
         <button
-          className="bg-blue-500 w-96 max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
+          className="bg-blue-500 w-72 sm:w-96 max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
           onClick={logindetail}
         >
           Login
         </button>
         <h2 className="text-center text-white">
           Don’t have an account?
-          <a href="https://www.youtube.com" className="text-sky-500">
+          <a href="https://www.youtube.com" className="text-blue-800">
             {" "}
             Sign up
           </a>
         </h2>
         <h3 className="text-gray-300 text-center">Or</h3>
         <div className="flex flex-col items-center">
-          <button className="flex  justify-center items-center my-3 h-10 w-96 max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+          <button className="flex justify-center items-center my-3 h-10 w-72 sm:w-96 max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
             <svg
               className="h-6 w-6 mr-2"
               xmlns="http://www.w3.org/2000/svg"
@@ -103,9 +104,9 @@ const index = () => {
               <g
                 id="Icons"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g id="Color-" transform="translate(-401.000000, -860.000000)">
                   <g id="Google" transform="translate(401.000000, 860.000000)">
@@ -131,7 +132,7 @@ const index = () => {
             </svg>
             <span className="text-sm">Sign in with Google</span>
           </button>
-          <button className="flex items-center justify-center  my-3 h-10 w-full max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+          <button className="flex items-center justify-center my-3 h-10 w-72 sm:w-96 max-w-md font-bold text-base bg-white border border-white rounded-lg shadow-md px-4 py-2 hover:border-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
             <svg
               className="h-6 w-6 mr-2"
               xmlns="http://www.w3.org/2000/svg"
@@ -140,9 +141,9 @@ const index = () => {
               <g
                 id="Icons"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Color-"

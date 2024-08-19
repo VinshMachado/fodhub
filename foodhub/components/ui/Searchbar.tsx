@@ -1,5 +1,6 @@
 import React from "react";
 import Profilething from "./Profilething";
+import { Input } from "@/components/ui/input";
 
 import MenuCheckbox from "./checkbox";
 import Menu from "./menu";
@@ -10,30 +11,21 @@ export const Searchbar = () => {
       <div className="w-full bg-orange-400 h-16 flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16">
         {/* Logo Section */}
         <div className="flex-shrink-0">
-          <img
-            src="/path-to-your-logo.png" // Replace with your logo path
-            alt="Logo"
-            className="h-10"
-          />
+          <img src="/loginBg.jpg" alt="Logo" className="h-10 w-10" />
         </div>
 
         {/* Search Form */}
         <form className="flex-grow flex items-center max-w-md">
           <label className="sr-only">Search</label>
           <div className="relative w-full">
-            <input
-              type="search"
-              id="default-search"
-              className="block w-full h-12 p-4 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search"
-              required
+            <Input
+              type="text"
+              placeholder="Search Restaurants Or Dishes"
+              className="pr-10 h-11 bg-white"
             />
-            <button
-              type="submit"
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full border-2 text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
               <svg
-                className="w-5 h-5"
+                className="w-5 h-5 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -47,14 +39,15 @@ export const Searchbar = () => {
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
-            </button>
+            </div>
+          </div>
+
+          <div className="hidden sm:flex justify-start items-center ">
+            <MenuCheckbox />
           </div>
         </form>
         <div className="flex items-center space-x-4">
           {/* MenuCheckbox will be hidden on mobile screens */}
-          <div className="hidden sm:flex justify-start items-center -translate-x-10">
-            <MenuCheckbox />
-          </div>
 
           {/* Icons and Profile Section will be hidden on mobile screens */}
           <div className="hidden sm:flex items-center space-x-4 text-white">
@@ -78,7 +71,7 @@ export const Searchbar = () => {
           </div>
         </div>
       </div>
-      <div className="h-14  flex items-center justify-center bg-white   block sm:hidden">
+      <div className="h-14  flex items-center justify-center bg-white  block sm:hidden">
         <Menu />
       </div>
     </div>
