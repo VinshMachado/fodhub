@@ -45,17 +45,20 @@ const maincontent = () => {
       let lati = userlocation.userlatitude;
       let longi = userlocation.userlongitude;
 
-      let datainfo = await fetch(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lati},${longi}&radius=2000&type=restaurant&key=AIzaSyBZ2YIJkSYkMQ6e7JKlHWVbqmsfdE_X5wI`
+      const datainfo = await axios.get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json`,
+        {
+          params: {
+            location: `${lati},${longi}`,
+            radius: 2000,
+            type: "restaurant",
+            key: "AIzaSyBZ2YIJkSYkMQ6e7JKlHWVbqmsfdE_X5wI",
+          },
+        }
       );
 
-      if (!datainfo.ok) {
-        throw new Error(`Error: ${datainfo.status} ${datainfo.statusText}`);
-      }
-
-      let something = await datainfo.json();
-      setnearbyplace(something.results);
-      console.log(something.results);
+      setnearbyplace(datainfo.data.results);
+      console.log(datainfo.data.results);
     } catch (error) {
       console.error("Error fetching data:", error);
     }

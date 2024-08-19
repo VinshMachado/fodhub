@@ -8,9 +8,10 @@ const Home = () => {
   return (
     <div className="h-screen w-screen bg-white flex overflow-x-hidden overflow-y-hidden">
       <Sidebar />
-      <div className="h-full w-full ">
-        <Searchbar />
-
+      <div className="h-full w-full">
+        <div className="h-20 w-full ">
+          <Searchbar />
+        </div>
         <div className="h-full w-full overflow-auto">
           <Maincontent />
         </div>
