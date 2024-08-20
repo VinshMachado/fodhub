@@ -20,7 +20,14 @@ const sidebar = () => {
       setSize(
         " ease-in-out duration-500 hidden bg-black flex flex-col items-center w-72 justify-center h-auto text-white sm:block"
       );
-      setIconName(["Home", "Location", "liked", "Profile", "Logout"]);
+      setIconName([
+        "Home",
+        "Location",
+        "liked",
+        "Profile",
+        "Creators/Sponsors",
+        "Logout",
+      ]);
     } else {
       setSize(
         "ease-in-out duration-500 hidden bg-black flex flex-col items-center w-20 justify-center h-auto text-white sm:block"
