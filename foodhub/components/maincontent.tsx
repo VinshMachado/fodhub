@@ -123,7 +123,7 @@ const maincontent = () => {
     }
   };
   return (
-    <div>
+    <div className="h-full w-full">
       {/* Main content area */}
       <div className="flex flex-col overflow-x-hidden w-full items-center">
         {/* New "Hello" div */}
