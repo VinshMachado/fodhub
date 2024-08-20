@@ -78,7 +78,7 @@ const signup = () => {
     <div className="h-screen w-full bg-[url('/loginBg.jpg')] bg-cover bg-center bg-no-repeat flex justify-center items-center p-4 sm:p-0 bg-opacity-100">
       <div className="flex flex-col bg-zinc-500 rounded-lg items-center justify-center h-2/3 shadow-[#312f2f] shadow-xl w-full sm:w-auto p-6 ">
         <b>
-          <h1 className="text-xl font-serif">Signup</h1>
+          <h1 className="text-2xl font-serif text-white">Signup</h1>
         </b>
         <input
           id="gmailfield"
@@ -110,10 +110,10 @@ const signup = () => {
         ></input>
         <div className="flex items-center my-2">
           <input type="checkbox" onClick={changeshow} />
-          <label className="ml-2 text-black">Show Password</label>
+          <label className="ml-2 text-white">Show Password</label>
         </div>
         <button
-          className="bg-blue-500 w-72 sm:w-96 max-w-md h-11 sm:h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
+          className="bg-blue-500 w-72 text-lg sm:w-96 max-w-md h-11 sm:h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
           onClick={logindetail}
         >
           Signup

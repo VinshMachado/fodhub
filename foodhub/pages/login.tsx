@@ -50,7 +50,7 @@ const index = () => {
     <div className="h-screen w-full bg-[url('/loginBg.jpg')] bg-cover bg-center bg-no-repeat flex justify-center items-center p-4 sm:p-0 bg-opacity-100">
       <div className="flex flex-col bg-zinc-500 rounded-lg items-center justify-center h-2/3 shadow-[#312f2f] shadow-xl w-full sm:w-auto p-6 ">
         <b>
-          <h1 className="text-xl font-serif text-center">Login</h1>
+          <h1 className="text-2xl font-serif text-center text-white">Login</h1>
         </b>
         <div className="py-2">
           <input
@@ -69,7 +69,7 @@ const index = () => {
         />
         <div className="flex-row flex-col justify-evenly sm:flex-row items-center">
           <input type="checkbox" onClick={changeshow} className="mr-2" />
-          <label className="mr-5 sm:mr-24">Show Password</label>
+          <label className="mr-5 sm:mr-24 text-white">Show Password</label>
           <a
             href="https://www.youtube.com"
             className="text-blue-800 mt-2 sm:mt-0 sm:ml-4"
@@ -78,7 +78,7 @@ const index = () => {
           </a>
         </div>
         <button
-          className="bg-blue-500 w-72 sm:w-96 max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400"
+          className="bg-blue-500 w-72 sm:w-96 max-w-md h-10 rounded-lg my-2 font-bold text-white hover:bg-blue-400 text-lg"
           onClick={logindetail}
         >
           Login
