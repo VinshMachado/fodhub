@@ -10,6 +10,7 @@ const sidebar = () => {
     "Location",
     "liked",
     "Profile",
+    "Creators/Sponsors",
     "Logout",
   ]);
 
@@ -154,6 +155,24 @@ const sidebar = () => {
           </svg>
           <span>{iconName[3] /* Profile */}</span>
         </button>
+        <button className="bg-zinc-950 w-full h-10 rounded-lg my-1 font-bold hover:bg-white hover:text-black flex items-center justify-center space-x-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            className="w-6 h-6 "
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+
+          <span>{iconName[4] /* Profile */}</span>
+        </button>
 
         <div className="h-full flex justify-center items-center w-full pt-10">
           <button className="bg-red-900 w-full m-1 h-10 rounded-lg flex items-center justify-center my-1 font-bold hover:bg-white hover:text-black">
@@ -171,7 +190,7 @@ const sidebar = () => {
                 d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
               />
             </svg>
-            <span>{iconName[4] /* Logout */}</span>
+            <span>{iconName[5] /* Logout */}</span>
           </button>
         </div>
       </div>
