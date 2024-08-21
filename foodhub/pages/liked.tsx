@@ -34,8 +34,10 @@ const Liked: React.FC = () => {
           <button
             onClick={handleClick}
             className={`absolute bottom-4 right-4 p-3 ${
-              isPink ? "bg-white" : " bg-pink-400"
-            } text-red-600 rounded-lg  focus:outline-none rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_pink] active:translate-x-[0px] active:translate-y-[0px] active:rounded-full active:shadow-none`}
+              isPink
+                ? "bg-pink-400 text-white hover:shadow-pink-500"
+                : "bg-gray-700 text-red-600 hover:shadow-blue-950"
+            } rounded-lg focus:outline-none rounded-2xl border-2 border-dashed border-black px-6 py-3 font-semibold uppercase transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-lg active:translate-x-0 active:translate-y-0 active:rounded-full `}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
