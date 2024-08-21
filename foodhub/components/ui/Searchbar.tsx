@@ -11,7 +11,7 @@ export const Searchbar = () => {
         {/* Logo Section */}
         <div className="flex-shrink-0">
           <img
-            src="/path-to-your-logo.png" // Replace with your logo path
+            src="foodhub.png" // Replace with your logo path
             alt="Logo"
             className="h-10"
           />
