@@ -20,7 +20,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/locationdetails.ts"
+    "pages/locationdetails.ts",
+    "components/maincontent.jsx",
+    "components/maincontent.jsx",
+    "components/maincontent.jsx"
   ],
   "exclude": ["node_modules"]
 }

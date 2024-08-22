@@ -10,7 +10,10 @@ const Home = () => {
       <Sidebar />
       <div className="h-full w-full ">
         <Searchbar />
-        <div className="h-full w-full overflow-auto">
+        <div
+          className="h-full w-full 
+         overflow-auto"
+        >
           <Maincontent />
         </div>
       </div>
