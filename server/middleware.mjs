@@ -121,7 +121,7 @@ export async function fetchPlaceDetails(apiKey, placeId) {
       const response = await axios.get('https://maps.googleapis.com/maps/api/place/details/json', {
           params: {
               place_id: placeId,
-              key: apiKey
+              key: apiKey,
           }
       });
       return response.data.result;
@@ -131,79 +131,194 @@ export async function fetchPlaceDetails(apiKey, placeId) {
   }
 }
 
-// Fetch and save restaurants 
-export async function fetchAndSaveRestaurants(apiKey, latitude, longitude, radius) {
-  try {
-      // Fetch nearby places
-      const response = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
-          params: {
-              location: `${latitude},${longitude}`,
-              radius: radius,
-              type: 'restaurant',
-              key: apiKey
-          }
-      });
 
-      const places = response.data.results;
-      const savedRestaurants = [];
-      const placeIds = [];
 
-      if (places.length === 0) {
+// Helper function to get detailed information for each place
+export async function fetchRestaurantsByNameOrSimilar(api_key, name, latitude, longitude, radius = 10000) {
+    try {
+      const endpoint = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+      let allRestaurants = [];
+      let nextPageToken = null;
+      let firstRequest = true;
+  
+      do {
+        // Wait for 2 seconds before making a request with the next_page_token
+        if (!firstRequest) {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+  
+        // Set up parameters for the request, including next_page_token if available
+        const params = {
+          keyword: name,
+          location: `${latitude},${longitude}`,
+          radius: radius,
+          type: 'restaurant',
+          key: api_key,
+          pagetoken: nextPageToken, // Use next_page_token for subsequent requests
+        };
+  
+        const response = await axios.get(endpoint, { params });
+  
+        const places = response.data.results;
+        nextPageToken = response.data.next_page_token || null; // Get the next_page_token
+  
+        if (places.length === 0) {
           console.log('No restaurants found.');
-          return [];
-      } else {
-          console.log(`Found ${places.length} restaurants.`);
-
-          
+          break; // Exit the loop if no places are found
+        } else {
+          console.log(`Found ${places.length} restaurants on this page.`);
+  
           for (const place of places) {
-              placeIds.push(place.place_id); 
-
-          
-              const details = await fetchPlaceDetails(apiKey, place.place_id);
-
-              if (details) {
-                  const existingRestaurant = await Restaurant.findOne({ place_id: place.place_id });
-
-                  if (!existingRestaurant) {
-                      const newRestaurant = new Restaurant({
-                          name: details.name,
-                          address: details.formatted_address,
-                          phone_number: details.formatted_phone_number || '',
-                          geometry: {
-                              location: {
-                                  lat: details.geometry.location.lat,
-                                  lng: details.geometry.location.lng
-                              },
-                              viewport: details.geometry.viewport
-                          },
-                          opening_hours: details.opening_hours,
-                          rating: details.rating,
-                          reviews: details.reviews || [], 
-                          user_ratings_total: details.user_ratings_total,
-                          types: details.types,
-                          photos: details.photos || []
-                      });
-
-                      await newRestaurant.save();
-                      savedRestaurants.push(newRestaurant);
-                  } else {
-                      savedRestaurants.push(existingRestaurant);
-                  }
+            const details = await fetchPlaceDetails(api_key, place.place_id);
+  
+            if (details) {
+              const existingRestaurant = await Restaurant.findOne({ place_id: place.place_id });
+  
+              if (!existingRestaurant) {
+                const newRestaurant = new Restaurant({
+                  name: details.name,
+                  address: details.formatted_address,
+                  place_id: place.place_id,
+                  phone_number: details.formatted_phone_number || '',
+                  geometry: {
+                    location: {
+                      lat: details.geometry.location.lat,
+                      lng: details.geometry.location.lng,
+                    },
+                    viewport: details.geometry.viewport,
+                  },
+                  opening_hours: details.opening_hours,
+                  rating: details.rating,
+                  reviews: details.reviews || [],
+                  user_ratings_total: details.user_ratings_total,
+                  types: details.types,
+                  photos: details.photos || [],
+                });
+  
+                await newRestaurant.save();
+                allRestaurants.push(newRestaurant);
+              } else {
+                allRestaurants.push(existingRestaurant);
               }
+            }
           }
-
-          console.log('Restaurants have been processed and saved.');
-          
-          
-          return savedRestaurants
-      }
-  } catch (error) {
+  
+          console.log('Restaurants on this page have been processed and saved.');
+        }
+  
+        firstRequest = false; // Set to false after the first request
+  
+      } while (nextPageToken); // Continue if nextPageToken is available
+  
+      // Return sorted restaurants by name
+      return allRestaurants.sort((a, b) => a.name.localeCompare(b.name));
+  
+    } catch (error) {
       console.error('Error fetching or saving restaurant data:', error);
       return [];
+    }
   }
-}
+  
+ 
 
 
+// Fetch
+
+// Fetch and save restaurants 
+export async function fetchAndSaveRestaurants(apiKey, latitude, longitude, radius) {
+    try {
+      let allRestaurants = [];
+      let nextPageToken = null;
+      let firstRequest = true;
+  
+      do {
+        // Wait for 2 seconds before making a request with the next_page_token
+        if (!firstRequest) {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
+  
+        // Fetch nearby places
+        const response = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+          params: {
+            location: `${latitude},${longitude}`,
+            radius: radius,
+            type: 'restaurant',
+            key: apiKey,
+            pagetoken: nextPageToken, // Include the next_page_token if available
+          }
+        });
+  
+        const places = response.data.results;
+        nextPageToken = response.data.next_page_token || null; // Get the next_page_token
+  
+        if (places.length === 0) {
+          console.log('No restaurants found.');
+          break; // Exit the loop if no places are found
+        } else {
+          console.log(`Found ${places.length} restaurants on this page.`);
+  
+          for (const place of places) {
+            const details = await fetchPlaceDetails(apiKey, place.place_id);
+  
+            if (details) {
+              const existingRestaurant = await Restaurant.findOne({ place_id: place.place_id });
+  
+              if (!existingRestaurant) {
+                const newRestaurant = new Restaurant({
+                  name: details.name,
+                  address: details.formatted_address,
+                  place_id: place.place_id,
+                  phone_number: details.formatted_phone_number || '',
+                  geometry: {
+                    location: {
+                      lat: details.geometry.location.lat,
+                      lng: details.geometry.location.lng,
+                    },
+                    viewport: details.geometry.viewport,
+                  },
+                  opening_hours: details.opening_hours,
+                  rating: details.rating,
+                  reviews: details.reviews || [],
+                  user_ratings_total: details.user_ratings_total,
+                  types: details.types,
+                  photos: details.photos || [],
+                });
+  
+                await newRestaurant.save();
+                allRestaurants.push(newRestaurant);
+              } else {
+                allRestaurants.push(existingRestaurant);
+              }
+            }
+          }
+  
+          console.log('Restaurants on this page have been processed and saved.');
+        }
+  
+        firstRequest = false; // Set to false after the first request
+  
+      } while (nextPageToken); // Continue if nextPageToken is available
+  
+      return allRestaurants;
+    } catch (error) {
+      console.error('Error fetching or saving restaurant data:', error);
+      return [];
+    }
+  }
+
+
+
+
+  export async function findRestaurantsByPlaceIds(placeIds) {
+    try {
+      // Use the $in operator to find all restaurants with a place_id in the array of placeIds
+      const restaurants = await Restaurant.find({ place_id: { $in: placeIds } });
+      return restaurants;
+    } catch (error) {
+      console.error('Error finding restaurants by place_ids:', error);
+    }
+  }
+  
 
 
 
