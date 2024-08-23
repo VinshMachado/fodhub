@@ -7,21 +7,27 @@ import {
 } from "@/components/ui/collapsible";
 import { CollapsibleDemo } from "@/components/ui/colapse";
 
-const about = () => {
+const About = () => {
   return (
-    <div>
+    <div className="bg-zinc-600 h-full  sm:h-screen   w-full">
       <div className="text-3xl text-black justify-center py-2 flex items-center font-bold">
         ABOUT PAGE
       </div>
       <div className="text-3xl text-black justify-start flex px-2 py-3 items-center font-bold">
         <span>Creators</span>
       </div>
-      <div className="flex justify-evenly items-center ">
-        <div className="bg-blue-500 w-96 h-[40rem] flex flex-col text-2xl rounded-lg">
-          <span className=" flex justify-center py-3">sion</span>
+      <div className="flex flex-col sm:flex-row justify-evenly items-center gap-6">
+        <div className="bg-blue-500 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+          <img
+            src="/loginBg.jpg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            alt="Login Background"
+          />
           <div className="flex flex-col items-center">
-            <img src="/loginBg.jpg" className="mb-4 h-40 w-40 rounded-full" />
-            <p className="text-center">
+            <span className="flex justify-center text-3xl font-semibold py-1 text-white">
+              sionn
+            </span>
+            <p className="text-center text-white">
               blah blah blah info info infoblah blah blah blah info info
               infoblah blah blah blah info info info.
             </p>
@@ -29,15 +35,44 @@ const about = () => {
           <CollapsibleDemo />
         </div>
 
-        <div className="bg-green-700 w-72 h-72 justify-center flex text-2xl">
-          machado
+        <div className="bg-green-500 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+          <img
+            src="/loginBg.jpg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            alt="Login Background"
+          />
+          <div className="flex flex-col items-center">
+            <span className="flex justify-center text-3xl font-semibold py-1 text-white">
+              machado
+            </span>
+            <p className="text-center text-white">
+              blah blah blah info info infoblah blah blah blah info info
+              infoblah blah blah blah info info info.
+            </p>
+          </div>
+          <CollapsibleDemo />
         </div>
-        <div className="bg-red-700 w-72 h-72 justify-center flex text-2xl">
-          roldan
+
+        <div className="bg-red-500 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
+          <img
+            src="/loginBg.jpg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            alt="Login Background"
+          />
+          <div className="flex flex-col items-center">
+            <span className="flex justify-center text-3xl font-semibold py-1 text-white">
+              roldy goldy
+            </span>
+            <p className="text-center text-white">
+              blah blah blah info info infoblah blah blah blah info info
+              infoblah blah blah blah info info info.
+            </p>
+          </div>
+          <CollapsibleDemo />
         </div>
       </div>
     </div>
   );
 };
 
-export default about;
+export default About;
