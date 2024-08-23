@@ -2,7 +2,7 @@ import { Router, request, response } from "express";
 const router=Router();
 import verifyToken from "../middleware.mjs";
 import { findRestaurantsByPlaceIds } from "../middleware.mjs";
-import { northindia_popular } from "../restaurantData.mjs/homeResturantDetails.mjs";
+import { northindia_budget, northindia_popular } from "../restaurantData.mjs/homeResturantDetails.mjs";
 import { fetchRestaurantsByNameOrSimilar } from "../middleware.mjs";
 import { fetchAndSaveRestaurants } from "../middleware.mjs";
 import { Restaurant } from "../mongoose/userDetails";
@@ -21,6 +21,9 @@ router.get('/northindia',async(request,response)=>{
     
     if(filter=='rating'){
         findRestaurantsByPlaceIds(northindia_popular).then(data=>{response.json(data)})
+    }
+    else{
+        findRestaurantsByPlaceIds(northindia_budget).then(data=>{response.json(data)})
     }
 
 })
