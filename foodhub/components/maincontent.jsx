@@ -16,9 +16,13 @@ const maincontent = () => {
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
   const [pureveg, setpureveg] = useState([]);
+  const [vegid, setvegid] = useState([]);
+  const [vegurl, setvegurl] = useState([]);
   const [seafood, setseafood] = useState([]);
-  const [temp, settemp] = useState(["kfc", "bombay lucky"]);
+  const [seaid, setseaids] = useState([]);
+  const [seaurl, setseaurl] = useState([]);
   const [id, setids] = useState([]);
+
   const [url, seturl] = useState([]);
   // get users current location ///
   const [userlocation, setuserlocation] = useState({
@@ -40,6 +44,8 @@ const maincontent = () => {
   useEffect(() => {
     console.log(userlocation);
     nearbyinfo();
+    veginfo();
+    seafoodinfo();
   }, [userlocation]);
 
   //fetching data from api//
@@ -108,6 +114,80 @@ const maincontent = () => {
       console.error("Error fetching data:", error);
     }
   };
+  const seafoodinfo = async () => {
+    try {
+      const lati = userlocation.userlatitude;
+      const longi = userlocation.userlongitude;
+      console.log(`in:${(longi, lati)}`);
+
+      const response = await axios.get(
+        `https://api.foursquare.com/v3/places/search`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+          },
+          params: {
+            ll: `${lati},${longi}`,
+            query: "sea food",
+          },
+        }
+      );
+
+      const data = response.data;
+      setseafood(data.results); // Assuming data.results contains the places
+      const idss = data.results.map((place) => place.fsq_id);
+      setseaids(idss);
+      const urlss = await Promise.all(idss.map((id) => fetchImageUrl(id)));
+
+      // Update state with the URLs
+      setseaurl(urlss);
+
+      console.log(url);
+      console.log(data); // Log the results array to verify its contents
+
+      console.log(seafood); // Log the state to check if it's set correctly
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const veginfo = async () => {
+    try {
+      const lati = userlocation.userlatitude;
+      const longi = userlocation.userlongitude;
+      console.log(`in:${(longi, lati)}`);
+
+      const response = await axios.get(
+        `https://api.foursquare.com/v3/places/search`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+          },
+          params: {
+            ll: `${lati},${longi}`,
+            query: "veg",
+          },
+        }
+      );
+
+      const data = response.data;
+      setpureveg(data.results); // Assuming data.results contains the places
+      const idss = data.results.map((place) => place.fsq_id);
+      setvegid(idss);
+      const urlss = await Promise.all(idss.map((id) => fetchImageUrl(id)));
+
+      // Update state with the URLs
+      setvegurl(urlss);
+      console.log("vegthing");
+      console.log(url);
+      console.log(data); // Log the results array to verify its contents
+
+      console.log(pureveg); // Log the state to check if it's set correctly
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const ourdatabase = async () => {
     try {
@@ -132,7 +212,7 @@ const maincontent = () => {
   return (
     <div className="h-full w-full">
       {/* Main content area */}
-      <div className="flex flex-col overflow-x-hidden w-full items-center">
+      <div className="flex flex-col overflow-x-hidden w-full items-center bg-orange-200">
         {/* New "Hello" div */}
 
         <Car />
@@ -141,7 +221,7 @@ const maincontent = () => {
           Nearby Restraunts
         </div>
         {/* near by*/}
-        <div className=" late-500 w-11/12 m-9  rounded-md p-4  ">
+        <div className=" late-500 w-11/12 m-9 flex justify-center  rounded-md p-4  ">
           <Carousel className="h-1/4 w-10/12 flex justify-center m-4">
             <CarouselContent className="-ml-4">
               {nearbyplace &&
@@ -150,16 +230,88 @@ const maincontent = () => {
                     key={i}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="bg-black rounded-md flex items-center justify-evenly h-28 w-28 overflow-hidden">
+                    <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
                       <img
-                        src={url[i]} // Replace with your placeholder image path
-                        className="object-cover h-32 w-auto "
+                        src={url[i]}
+                        className="object-cover h-32  "
                         alt="Placeholder Image"
                       />
 
                       <div className="h-full w-full">
-                        <h1 className="ml-5 cl w-full bg-black">{data.name}</h1>
-                        <p className="ml-5 cl w-full">Rating:{data.rating}</p>
+                        <div className="text-lg pl-4"> {data.name}</div>
+                        <div className="pl-4   text-sm">
+                          {data.location.address}
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+        {/* seafood*/}
+        <div className="pt-3 md:text-4xl text-3xl font-bold  h-20 mb-9">
+          Sea food
+        </div>
+        <div className=" late-500 w-10 h-56   m-9 flex justify-center rounded-md p-4  ">
+          <Carousel className="h-1/4 w-28 flex justify-center bg-gray-400 m-4">
+            <CarouselContent className="-ml-4">
+              {seafood &&
+                seafood.map((data, i) => (
+                  <CarouselItem
+                    key={i}
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 w-full text-2xl "
+                  >
+                    <div className=" rounded-md flex items-center  w-auto overflow-hidden">
+                      <img
+                        src={seaurl[i]}
+                        className="object-cover h-32 rounded-sm m-4 "
+                        alt="Placeholder Image"
+                      />
+
+                      <div className="h-full w-26 bg-gray-900">
+                        <div className="text-3xl bg-white text-black pl-4">
+                          {data.name}
+                        </div>
+                        <div className="pl-4 bg-green  w-1/4  text-black text-sm">
+                          {data.location.address}
+                        </div>
+                        <p className="text-orange-500 mt-6 pl-3  text-xl">
+                          {data.closed_bucket}
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+        <div className="pt-3 md:text-4xl text-3xl font-bold mt-6">Pure Veg</div>
+        <div className="mt-4 h-64 w-11/12 flex justify-center items-center rounded-sm  md:text-4xl text-lg top-16 bg-black p-4">
+          <Carousel className="h-1/4 w-10/12 flex justify-center m-4">
+            <CarouselContent className="-ml-4">
+              {pureveg &&
+                pureveg.map((data, i) => (
+                  <CarouselItem
+                    key={i}
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
+                  >
+                    <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
+                      <img
+                        src={vegurl[i]}
+                        className="object-cover h-32  "
+                        alt="Placeholder Image"
+                      />
+
+                      <div className="h-full w-full">
+                        <div className="text-lg pl-4"> {data.name}</div>
+                        <div className="pl-4   text-sm">
+                          {data.location.address}
+                        </div>
                       </div>
                     </div>
                   </CarouselItem>
