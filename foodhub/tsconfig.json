@@ -23,7 +23,8 @@
     "pages/locationdetails.ts",
     "components/maincontent.jsx",
     "components/maincontent.jsx",
-    "components/maincontent.jsx"
+    "components/maincontent.jsx",
+    "components/ui/Pureveg.jsx"
   ],
   "exclude": ["node_modules"]
 }

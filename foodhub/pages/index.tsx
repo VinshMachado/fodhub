@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="h-screen w-screen bg-white flex overflow-x-hidden overflow-y-hidden">
       <Sidebar />
-      <div className="h-full w-full ">
+      <div className="h-screen w-full ">
         <Searchbar />
         <div
           className="h-full w-full 
