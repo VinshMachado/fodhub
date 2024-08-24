@@ -20,7 +20,7 @@ export function CollapsibleDemo() {
     >
       {/* Header Section */}
       <div className="flex border-3 items-center justify-between px-4">
-        <h4 className="text-[1rem] font-normal">
+        <h4 className="text-[1rem] font-medium">
           Connections or whatever it’s called
         </h4>
         <CollapsibleTrigger asChild>

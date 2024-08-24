@@ -10,7 +10,7 @@ import { CollapsibleDemo } from "@/components/ui/colapse";
 
 const About = () => {
   return (
-    <div className="bg-[url('/food.jpeg')]  bg-cover bg-center bg-no-repeat h-full  lg:h-screen overflow-x-hidden  w-full">
+    <div className="bg-gradient-to-b from-black via-purple-800 to-red-800 lg:bg-[url('/food.jpeg')]  bg-cover bg-center bg-no-repeat h-full  lg:h-screen overflow-x-hidden  w-full">
       <div className="text-3xl text-white justify-center py-2 flex items-center font-bold">
         ABOUT PAGE
       </div>
@@ -20,10 +20,10 @@ const About = () => {
         <span>Creators</span>
       </div>
       <div className="flex flex-col lg:flex-row justify-evenly items-center gap-6">
-        <div className=" bg-opacity-35  bg-blue-800 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+        <div className=" hover:bg-blue-800 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-blue-800 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
           <img
             src="/loginBg.jpg"
-            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
@@ -37,11 +37,10 @@ const About = () => {
           </div>
           <CollapsibleDemo />
         </div>
-
-        <div className="bg-green-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+        <div className="bg-green-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-700 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
           <img
             src="/loginBg.jpg"
-            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
@@ -56,7 +55,7 @@ const About = () => {
           <CollapsibleDemo />
         </div>
 
-        <div className="bg-red-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
+        <div className="bg-red-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-700 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
           <img
             src="/loginBg.jpg"
             className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
@@ -78,7 +77,7 @@ const About = () => {
         <div className="text-3xl text-white font-bold px-2 py-7 underline">
           info on our website
         </div>
-        <p className="text-xl text-white font-medium px-2">
+        <p className="text-xl text-white text-center font-medium px-2">
           blah blah blah info info infoblah blah blah blah info info infoblah
           blah blah blah infoblah blah blah info info infoblah blah blah blah
           info info infoblah blah blah blah infoblah blah blah info info
