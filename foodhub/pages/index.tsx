@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, createContext } from "react";
 import Maincontent from "@/components/maincontent";
 import { Searchbar } from "@/components/ui/Searchbar";
 import Sidebar from "@/components/ui/sidebar";
+
 const Home = () => {
   //nav bar logic///
 

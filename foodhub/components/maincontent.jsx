@@ -251,32 +251,29 @@ const maincontent = () => {
         <div className="pt-3 md:text-4xl text-3xl font-bold  h-20 mb-9">
           Sea food
         </div>
-        <div className=" late-500 w-10 h-56   m-9 flex justify-center rounded-md p-4  ">
-          <Carousel className="h-1/4 w-28 flex justify-center bg-gray-400 m-4">
+        <div className=" late-500 w-11/12 m-9 flex justify-center  rounded-md p-4  ">
+          <Carousel className="h-1/4 w-10/12 flex justify-center m-4 shadow-2xl rounded-lg">
             <CarouselContent className="-ml-4">
               {seafood &&
                 seafood.map((data, i) => (
                   <CarouselItem
                     key={i}
-                    className="pl-4 md:basis-1/2 lg:basis-1/3 w-full text-2xl "
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className=" rounded-md flex items-center  w-auto overflow-hidden">
+                    <div className="shadow-xl rounded-md flex items-center   justify-evenly w-full overflow-hidden">
                       <img
                         src={seaurl[i]}
-                        className="object-cover h-32 rounded-sm m-4 "
+                        className="object-cover h-32 shadow-md rounded-sm"
                         alt="Placeholder Image"
                       />
 
-                      <div className="h-full w-26 bg-gray-900">
-                        <div className="text-3xl bg-white text-black pl-4">
+                      <div className="h-full w-full">
+                        <div className="text-lg pl-4 text-black  bg-white rounded-md p-2">
                           {data.name}
                         </div>
-                        <div className="pl-4 bg-green  w-1/4  text-black text-sm">
+                        <div className="pl-4 text-black text-sm  bg-gray-200 rounded-md p-2">
                           {data.location.address}
                         </div>
-                        <p className="text-orange-500 mt-6 pl-3  text-xl">
-                          {data.closed_bucket}
-                        </p>
                       </div>
                     </div>
                   </CarouselItem>
@@ -286,6 +283,7 @@ const maincontent = () => {
             <CarouselNext />
           </Carousel>
         </div>
+
         <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
           Pure Veg
         </div>
@@ -300,7 +298,7 @@ const maincontent = () => {
                   >
                     <div
                       onClick={() => {
-                        console.log(`hello ${data.fsq_id}`);
+                        console.log(`hello ${data.id}`);
                       }}
                       className="bg-black rounded-md flex items-center justify-evenly w-full h-full overflow-hidden"
                     >

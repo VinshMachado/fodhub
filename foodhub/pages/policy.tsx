@@ -1,6 +1,6 @@
 import React from "react";
 
-const policy = () => {
+const Policy = () => {
   return (
     <div className="flex justify-center items-center h-screen ">
       <p className="bg-black text-white text-xl rounded-lg py-60   w-11/12 h-3/4">
@@ -33,4 +33,4 @@ const policy = () => {
   );
 };
 
-export default policy;
+export default Policy;
