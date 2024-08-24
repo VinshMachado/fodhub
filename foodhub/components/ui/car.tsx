@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Car: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = ["Slide 1", "Slide 2", "Slide 3", "Slide 4", "Slide 5"]; // Replace with your actual slides or images
+
+  const imgg = [
+    "../ad0.png",
+    "../ad1.png",
+    "../ad2.jpg",
+    "../ad3.jpg",
+    "../food.jpeg",
+    "../loginBg.jpg",
+  ];
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -16,9 +25,19 @@ const Car: React.FC = () => {
     );
   };
 
+  // Automatically change slides every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000); // Change slide every 5 seconds
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   return (
-    <div className="relative mt-5 rounded-lg w-11/12 bg-black overflow-hidden">
-      <div className="relative h-[400px] md:h-[34rem]  overflow-hidden rounded-lg">
+    <div className="relative mt-5 rounded-lg w-11/12  overflow-hidden">
+      <div className="relative h-[400px] md:h-[34rem] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -27,7 +46,7 @@ const Car: React.FC = () => {
             }`}
           >
             <span className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
-              {slide}
+              <img className="h-full w-full" src={`${imgg[index + 1]}`} />
             </span>
           </div>
         ))}

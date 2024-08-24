@@ -13,6 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import Car from "./ui/car";
 
 const maincontent = () => {
+  const api = "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=";
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
   const [pureveg, setpureveg] = useState([]);
@@ -55,7 +56,7 @@ const maincontent = () => {
         `https://api.foursquare.com/v3/places/${fsq_id}/photos?limit=1`,
         {
           headers: {
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // Replace with your actual API key
+            Authorization: `${api}`, // Replace with your actual API key
             "Content-Type": "application/json",
           },
         }
@@ -87,7 +88,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+            Authorization: `${api}`,
           },
           params: {
             ll: `${lati},${longi}`,
@@ -125,7 +126,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+            Authorization: `${api}`, // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -162,7 +163,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+            Authorization: `${api}`, // API key
           },
           params: {
             ll: `${lati},${longi}`,
