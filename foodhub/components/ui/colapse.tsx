@@ -16,16 +16,16 @@ export function CollapsibleDemo() {
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="w-[350px] space-y-2 flex flex-col ml-4 mt-2 duration-700"
+      className="w-[350px] space-y-2 flex flex-col mx-2 mt-2 duration-700"
     >
       {/* Header Section */}
       <div className="flex border-3 items-center justify-between px-4">
-        <h4 className="text-lg font-normal">
+        <h4 className="text-[1rem] font-normal">
           Connections or whatever it’s called
         </h4>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm">
-            <CaretSortIcon className="h-4 w-4" />
+            <CaretSortIcon className="h-5 w-5" />
             <span className="sr-only">Toggle</span>
           </Button>
         </CollapsibleTrigger>
