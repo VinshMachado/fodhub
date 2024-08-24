@@ -14,7 +14,7 @@ router.get('/home',verifyToken,(request,response)=>{
 
 router.post('/navigate',(request,response)=>{
     
-    findRestaurantsByNames(request.body).then(data=>response.json(data))
+  findRestaurantsByNames(request.body).then(data=>response.json(data))
 });
   
 router.get('/northindia',async(request,response)=>{
@@ -36,53 +36,47 @@ router.get('/search',(request,response)=>{
 })
 
  
-async function findRestaurantsByNames(dataArray) {
-    try {
-      // Extract names from the data array
-      const names = dataArray
-        .flatMap(item => item.results)
-        .flatMap(result => result.categories)
-        .map(category => category.name.trim()); // Use .trim() to remove any extra spaces
-  
-      // Remove duplicates
-      const uniqueNames = [...new Set(names)];
-  
-      // Log extracted names for debugging
-      console.log('Extracted names:', uniqueNames);
-  
-      // If no names are extracted, return an empty array
-      if (uniqueNames.length === 0) {
-        return [];
-      }
-  
-      // Retrieve all restaurant names from the database
-      const allRestaurants = await Restaurant.find({}).select('name').exec();
-      const restaurantNames = allRestaurants.map(rest => rest.name);
-  
-      // Set up Fuse.js options
-      const fuse = new Fuse(restaurantNames, {
-        includeScore: true,
-        threshold: 0.2 // Adjust threshold as needed (0.0 is exact match, 1.0 is very loose)
-      });
-  
-      // Perform fuzzy search for each unique name
-      const results = uniqueNames.map(name => {
-        const searchResults = fuse.search(name);
-        return searchResults.map(item => item.item);
-      }).flat();
-  
-      // Log found restaurants for debugging
-      console.log('Restaurants found:', results);
-  
-      // Retrieve full restaurant documents
-      const matchedRestaurants = await Restaurant.find({ name: { $in: results } }).exec();
-  
-      return matchedRestaurants;
-    } catch (error) {
-      console.error('Error finding restaurants:', error);
-      throw error;
+async function findRestaurantsByNames(names) {
+  try {
+    // Ensure names are trimmed and remove duplicates
+    const uniqueNames = [...new Set(names.map(name => name.trim()))];
+
+    // Log extracted names for debugging
+    console.log('Extracted names:', uniqueNames);
+
+    // If no names are provided, return an empty array
+    if (uniqueNames.length === 0) {
+      return [];
     }
+
+    // Retrieve all restaurant names from the database
+    const allRestaurants = await Restaurant.find({}).select('name').exec();
+    const restaurantNames = allRestaurants.map(rest => rest.name);
+
+    // Set up Fuse.js options for fuzzy search
+    const fuse = new Fuse(restaurantNames, {
+      includeScore: true,
+      threshold: 0.2 // Adjust threshold as needed (0.0 is exact match, 1.0 is very loose)
+    });
+
+    // Perform fuzzy search for each unique name
+    const results = uniqueNames.map(name => {
+      const searchResults = fuse.search(name);
+      return searchResults.map(item => item.item);
+    }).flat();
+
+    // Log found restaurants for debugging
+    console.log('Restaurants found:', results);
+
+    // Retrieve full restaurant documents
+    const matchedRestaurants = await Restaurant.find({ name: { $in: results } }).exec();
+
+    return matchedRestaurants;
+  } catch (error) {
+    console.error('Error finding restaurants:', error);
+    throw error;
   }
+}
   
   async function searchRestaurantByName(search) {
     try {
