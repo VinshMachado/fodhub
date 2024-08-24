@@ -222,34 +222,36 @@ const maincontent = () => {
           Nearby Restraunts
         </div>
         {/* near by*/}
-        <div className="late-500 shadow-lg w-11/12 m-9 flex justify-center rounded-md p-4">
-          <Carousel className="relative h-1/4 w-10/12 overflow-x-auto scroll-snap-x-mandatory flex">
-            <CarouselContent className="flex space-x-4">
+        <div className=" late-500 shadow-lg w-11/12 m-9 flex justify-center  rounded-md p-4  ">
+          <Carousel className="h-1/4 w-10/12 flex justify-center m-4">
+            <CarouselContent className="-ml-4">
               {nearbyplace &&
                 nearbyplace.map((data, i) => (
                   <CarouselItem
                     key={i}
-                    className="flex-shrink-0 w-1/3 md:w-1/2 lg:w-1/3 snap-start"
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="bg-black rounded-md flex items-center justify-evenly h-full w-full overflow-hidden">
+                    <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
                       <img
                         src={url[i]}
-                        className="object-cover h-32  m-4"
+                        className="object-cover h-32  "
                         alt="Placeholder Image"
                       />
-                      <div className="h-full w-full text-white flex flex-col justify-center p-4">
-                        <div className="text-lg">{data.name}</div>
-                        <div className="text-sm">{data.location.address}</div>
+
+                      <div className="h-full w-full">
+                        <div className="text-lg pl-4"> {data.name}</div>
+                        <div className="pl-4   text-sm">
+                          {data.location.address}
+                        </div>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute top-1/2 left-0 transform -translate-y-1/2" />
-            <CarouselNext className="absolute top-1/2 right-0 transform -translate-y-1/2" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
-
         {/* seafood*/}
         <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
           Sea Food
@@ -266,7 +268,7 @@ const maincontent = () => {
                     <div className="bg-black rounded-md flex items-center w-full overflow-hidden">
                       <img
                         src={seaurl[i]}
-                        className="object-cover h-32 m-4"
+                        className="object-cover h-32 w-40  rounded-sm m-4"
                         alt="Placeholder Image"
                       />
                       <div className="h-full w-full text-white">
@@ -290,7 +292,7 @@ const maincontent = () => {
         <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
           Pure Veg
         </div>
-        <div className="h-56 shadow-lg w-11/12  m-9   flex justify-center rounded-md p-4">
+        <div className="h-56 shadow-lg w-11/12 h-full m-9 mb-7 pb-10 flex justify-center rounded-md p-4">
           <Carousel className="relative h-full w-full overflow-x-auto scroll-snap-x-mandatory flex">
             <CarouselContent className="flex space-x-4">
               {pureveg &&
