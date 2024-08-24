@@ -264,7 +264,7 @@ const maincontent = () => {
                     key={i}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 w-full text-2xl "
                   >
-                    <div className=" rounded-md flex items-center  w-auto overflow-hidden">
+                    <div className="bg-black rounded-md flex items-center  w-auto overflow-hidden">
                       <img
                         src={seaurl[i]}
                         className="object-cover h-32 rounded-sm m-4 "
