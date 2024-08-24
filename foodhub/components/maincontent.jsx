@@ -126,7 +126,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${api}`, // API key
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -163,7 +163,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${api}`, // API key
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -180,11 +180,6 @@ const maincontent = () => {
 
       // Update state with the URLs
       setvegurl(urlss);
-      console.log("vegthing");
-      console.log(url);
-      console.log(data); // Log the results array to verify its contents
-
-      console.log(pureveg); // Log the state to check if it's set correctly
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -265,7 +260,7 @@ const maincontent = () => {
                     key={i}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 w-full text-2xl "
                   >
-                    <div className="bg-black rounded-md flex items-center  w-auto overflow-hidden">
+                    <div className=" rounded-md flex items-center  w-auto overflow-hidden">
                       <img
                         src={seaurl[i]}
                         className="object-cover h-32 rounded-sm m-4 "
@@ -303,7 +298,12 @@ const maincontent = () => {
                     key={i}
                     className="md:basis-1/2 lg:basis-1/3 text-2xl text-white flex flex-col items-center"
                   >
-                    <div className="bg-black rounded-md flex items-center justify-evenly w-full h-full overflow-hidden">
+                    <div
+                      onClick={() => {
+                        console.log(`hello ${data.fsq_id}`);
+                      }}
+                      className="bg-black rounded-md flex items-center justify-evenly w-full h-full overflow-hidden"
+                    >
                       <img
                         src={vegurl[i]}
                         className="object-cover h-32 w-full"

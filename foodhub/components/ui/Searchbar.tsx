@@ -11,7 +11,7 @@ export const Searchbar = () => {
       <div className="w-full bg-orange-400 h-16 flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16">
         {/* Logo Section */}
         <div className="flex-shrink-0">
-          <img src="/foodhub.png" alt="Logo" className="h-10 w-24" />
+          <p>foodHub</p>
         </div>
 
         {/* Search Form */}

@@ -36,7 +36,7 @@ const Car: React.FC = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative mt-5 rounded-lg w-11/12  overflow-hidden">
+    <div className="relative mt-5 rounded-lg w-11/12  overflow-hidden bg-black">
       <div className="relative h-[400px] md:h-[34rem] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
           <div
