@@ -10,7 +10,7 @@ const sidebar = () => {
     "Location",
     "liked",
     "Profile",
-    "Creators/Sponsors",
+    "Sponsors",
     "Logout",
   ]);
 
@@ -25,7 +25,7 @@ const sidebar = () => {
         "Location",
         "liked",
         "Profile",
-        "Creators/Sponsors",
+        "Sponsors",
         "Logout",
       ]);
     } else {

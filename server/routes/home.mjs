@@ -19,13 +19,18 @@ router.post("/navigate", (request, response) => {
   findRestaurantsByNames(request.body).then((data) => response.json(data));
 });
 
-router.get("/navigate", (request, response) => {
-  fetchAndSaveRestaurants(
-    apiKey,
-    request.query.latitude,
-    request.query.longitude,
-    request.query.radius
-  ).then((data) => response.json(data));
+router.get("/northindia", async (request, response) => {
+  const { filter } = request.query;
+
+  if (filter == "rating") {
+    findRestaurantsByPlaceIds(northindia_popular).then((data) => {
+      response.json(data);
+    });
+  } else {
+    findRestaurantsByPlaceIds(northindia_budget).then((data) => {
+      response.json(data);
+    });
+  }
 });
 
 router.get("/search", (request, response) => {
@@ -34,21 +39,15 @@ router.get("/search", (request, response) => {
   searchRestaurantByName(search).then((data) => response.json(data));
 });
 
-async function findRestaurantsByNames(dataArray) {
+async function findRestaurantsByNames(names) {
   try {
-    // Extract names from the data array
-    const names = dataArray
-      .flatMap((item) => item.results)
-      .flatMap((result) => result.categories)
-      .map((category) => category.name.trim()); // Use .trim() to remove any extra spaces
-
-    // Remove duplicates
-    const uniqueNames = [...new Set(names)];
+    // Ensure names are trimmed and remove duplicates
+    const uniqueNames = [...new Set(names.map((name) => name.trim()))];
 
     // Log extracted names for debugging
     console.log("Extracted names:", uniqueNames);
 
-    // If no names are extracted, return an empty array
+    // If no names are provided, return an empty array
     if (uniqueNames.length === 0) {
       return [];
     }
@@ -57,7 +56,7 @@ async function findRestaurantsByNames(dataArray) {
     const allRestaurants = await Restaurant.find({}).select("name").exec();
     const restaurantNames = allRestaurants.map((rest) => rest.name);
 
-    // Set up Fuse.js options
+    // Set up Fuse.js options for fuzzy search
     const fuse = new Fuse(restaurantNames, {
       includeScore: true,
       threshold: 0.2, // Adjust threshold as needed (0.0 is exact match, 1.0 is very loose)
@@ -120,13 +119,5 @@ async function searchRestaurantByName(search) {
     throw error;
   }
 }
-
-router.get("/search", (request, response) => {
-  const { search, latitude, longitude } = request.query;
-  console.log(search);
-  fetchRestaurantsByNameOrSimilar(apiKey, search, latitude, longitude).then(
-    (data) => response.json(data)
-  );
-});
 
 export default router;

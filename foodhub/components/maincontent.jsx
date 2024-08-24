@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "./ui/menu";
+
 import axios from "axios";
 import {
   Carousel,
@@ -13,13 +13,13 @@ import { useContext, useEffect, useState } from "react";
 import Car from "./ui/car";
 
 const maincontent = () => {
-  const photolink =
-    "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=";
-  const key = "AIzaSyBZ2YIJkSYkMQ6e7JKlHWVbqmsfdE_X5wI";
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
   const [pureveg, setpureveg] = useState([]);
   const [seafood, setseafood] = useState([]);
+  const [temp, settemp] = useState(["kfc", "bombay lucky"]);
+  const [id, setids] = useState([]);
+  const [url, seturl] = useState([]);
   // get users current location ///
   const [userlocation, setuserlocation] = useState({
     userlongitude: 0,
@@ -41,28 +41,91 @@ const maincontent = () => {
     console.log(userlocation);
     nearbyinfo();
   }, [userlocation]);
+
   //fetching data from api//
+  const fetchImageUrl = async (fsq_id) => {
+    try {
+      const response = await axios.get(
+        `https://api.foursquare.com/v3/places/${fsq_id}/photos?limit=1`,
+        {
+          headers: {
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // Replace with your actual API key
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.length > 0) {
+        const photo = response.data[0];
+        const photoUrl = `${photo.prefix}original${photo.suffix}`;
+        console.log(photoUrl);
+        return photoUrl; // Return the image URL
+      } else {
+        // Return a default image URL if no image is found
+        return "/images.png";
+      }
+    } catch (error) {
+      console.error("Error fetching image URL:", error);
+      // Return an error image URL if the request fails
+      return "/images/error-image.png";
+    }
+  };
   const nearbyinfo = async () => {
     try {
-      let lati = userlocation.userlatitude;
-      let longi = userlocation.userlongitude;
+      const lati = userlocation.userlatitude;
+      const longi = userlocation.userlongitude;
+      console.log(`in:${(longi, lati)}`);
 
-      const datainfo = await fetch(
-        `http://localhost:5000/navigate?latitude=${lati}&longitude=${longi}&radius=1500`,
+      const response = await axios.get(
+        `https://api.foursquare.com/v3/places/search`,
         {
-          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+          },
+          params: {
+            ll: `${lati},${longi}`,
+            query: "restaurant",
+            radius: 1500,
+          },
+        }
+      );
+
+      const data = response.data;
+      setnearbyplace(data.results); // Assuming data.results contains the places
+      const idss = data.results.map((place) => place.fsq_id);
+      setids(idss);
+      const urlss = await Promise.all(idss.map((id) => fetchImageUrl(id)));
+
+      // Update state with the URLs
+      seturl(urlss);
+
+      console.log(url);
+      console.log(data); // Log the results array to verify its contents
+
+      console.log(nearbyplace); // Log the state to check if it's set correctly
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const ourdatabase = async () => {
+    try {
+      console.log(temp); // Ensure temp is an array
+
+      const response = await axios.post(
+        "http://localhost:5000/navigate",
+        temp, // Sending the array directly as the body
+        {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
 
-      const data = await datainfo.json();
-      setnearbyplace(data);
-
-      console.log(data);
+      console.log(response.data); // The response is already in JSON format
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error posting data:", error);
     }
   };
 
@@ -88,58 +151,19 @@ const maincontent = () => {
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
                     <div className="bg-black rounded-md flex items-center justify-evenly h-28 w-28 overflow-hidden">
-                      {data?.photos?.[0]?.photo_reference ? ( // Check if photo_reference exists
-                        <img
-                          src={`${photolink}${data?.photos[0]?.photo_reference}&key=${key}`}
-                          className="object-cover h-32 w-auto mr-4"
-                          alt={`Image of ${data.name}`}
-                        />
-                      ) : (
-                        <img
-                          src="\images.png" // Replace with your placeholder image path
-                          className="object-cover h-32 w-auto mr-4"
-                          alt="Placeholder Image"
-                        />
-                      )}
+                      <img
+                        src={url[i]} // Replace with your placeholder image path
+                        className="object-cover h-32 w-auto "
+                        alt="Placeholder Image"
+                      />
+
                       <div className="h-full w-full">
-                        <h1 className="ml-5 cl w-full bg-black">
-                          {" "}
-                          {data.name}
-                        </h1>
+                        <h1 className="ml-5 cl w-full bg-black">{data.name}</h1>
                         <p className="ml-5 cl w-full">Rating:{data.rating}</p>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
-        <div className="pt-3 md:text-4xl text-3xl font-bold">Pure VEG</div>
-        {/* Pure veg*/}
-        <div className="mt-4 h-64 w-11/12 flex justify-center items-center  md:text-4xl text-lg rounded-sm  top-16 bg-yellow-700 late-500 p-4">
-          <Carousel>
-            <CarouselContent className="text-white">
-              {nearbyplace.map((data, i) => (
-                <CarouselItem className=" basis-1/3 justify-evenly " key={i}>
-                  {data.name}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
-        <div className="pt-3 md:text-4xl text-3xl font-bold">Sea food</div>
-        <div className="mt-4 h-64 w-11/12 flex justify-center items-center rounded-sm  md:text-4xl text-lg top-16 bg-black p-4">
-          <Carousel>
-            <CarouselContent className="text-white">
-              {seafood.map((data, i) => (
-                <CarouselItem className=" basis-1/3 justify-evenly" key={i}>
-                  {data.name}
-                </CarouselItem>
-              ))}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
