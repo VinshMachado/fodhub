@@ -290,28 +290,28 @@ const maincontent = () => {
             <CarouselNext />
           </Carousel>
         </div>
-        <div className="pt-3 md:text-4xl text-3xl font-bold mt-6">Pure Veg</div>
-        <div className="mt-4 h-64 w-11/12 flex justify-center items-center rounded-sm  md:text-4xl text-lg top-16 bg-black p-4">
-          <Carousel className="h-1/4 w-10/12 flex justify-center m-4">
-            <CarouselContent className="-ml-4">
+        <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
+          Pure Veg
+        </div>
+        <div className="h-64 pb-11 w-full flex justify-center items-center rounded-sm md:text-4xl text-lg bg-white p-4">
+          <Carousel className="h-full w-full flex justify-center m-4 overflow-hidden">
+            <CarouselContent className="flex w-full">
               {pureveg &&
                 pureveg.map((data, i) => (
                   <CarouselItem
                     key={i}
-                    className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
+                    className="md:basis-1/2 lg:basis-1/3 text-2xl text-white flex flex-col items-center"
                   >
-                    <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
+                    <div className="bg-black rounded-md flex items-center justify-evenly w-full h-full overflow-hidden">
                       <img
                         src={vegurl[i]}
-                        className="object-cover h-32  "
+                        className="object-cover h-32 w-full"
                         alt="Placeholder Image"
                       />
 
-                      <div className="h-full w-full">
-                        <div className="text-lg pl-4"> {data.name}</div>
-                        <div className="pl-4   text-sm">
-                          {data.location.address}
-                        </div>
+                      <div className="flex flex-col justify-center items-start w-full h-full p-4">
+                        <div className="text-lg">{data.name}</div>
+                        <div className="text-sm">{data.location.address}</div>
                       </div>
                     </div>
                   </CarouselItem>
