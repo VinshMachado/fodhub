@@ -9,7 +9,7 @@ const sponsor = () => {
       </div>
       <Separator />
       <div className="flex justify-evenly items center flex-wrap mt-3">
-        <div className="bg-red-500 my-3 mx-2 md:mb-3 w-[24rem] h-fit cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
+        <div className="bg-[#A67C00] my-3 mx-2 md:mb-3 w-[24rem] h-fit cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-[#A67C00]">
           <img
             src="/roger.jpg"
             className="h-60 w-60 pt-2 rounded-full object-cover duration-300 ease-in-out hover:shadow-lg"
@@ -18,16 +18,17 @@ const sponsor = () => {
 
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              latpot CEO Roger Das
+              The Great CEO Dr.Roger Vas
             </span>
             <p className="text-center pb-2 text-white">
-              he is a big nai didnt donate anything.
+              He is one of our major sponsor who lost 4k on this project we
+              thank you may god bless you and give you many kids.
             </p>
           </div>
         </div>
         <div className="bg-red-500 my-3 mx-2 md:mb-3 w-[24rem] h-fit cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
           <img
-            src="/loginBg.jpg"
+            src="/.jpg"
             className="h-60 w-60 pt-2 rounded-full object-cover duration-300 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
