@@ -20,7 +20,7 @@ const About = () => {
         <span>Creators</span>
       </div>
       <div className="flex flex-col lg:flex-row justify-evenly items-center gap-6">
-        <div className=" hover:bg-blue-800 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-blue-800 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+        <div className=" hover:bg-black hover:bg-opacity-90 duration-700   bg-opacity-35  bg-black md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
           <img
             src="/loginBg.jpg"
             className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
@@ -37,7 +37,7 @@ const About = () => {
           </div>
           <CollapsibleDemo />
         </div>
-        <div className="bg-green-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-700 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
+        <div className=" hover:bg-teal-600 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-teal-600 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
           <img
             src="/loginBg.jpg"
             className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
@@ -55,10 +55,10 @@ const About = () => {
           <CollapsibleDemo />
         </div>
 
-        <div className="bg-red-500 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform duration-700 ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-800">
+        <div className=" hover:bg-yellow-600 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-yellow-600 md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-yellow-800">
           <img
             src="/loginBg.jpg"
-            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-300 ease-in-out hover:shadow-lg"
+            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
@@ -74,19 +74,24 @@ const About = () => {
         </div>
       </div>
       <div>
-        <div className="text-3xl text-white font-bold px-2 py-7 underline">
+        <div className="text-3xl ml-[4.7rem] text-white font-bold px-2 py-7 underline">
           info on our website
         </div>
-        <p className="text-xl text-white text-center font-medium px-2">
-          blah blah blah info info infoblah blah blah blah info info infoblah
-          blah blah blah infoblah blah blah info info infoblah blah blah blah
-          info info infoblah blah blah blah infoblah blah blah info info
-          infoblah blah blah blah info info infoblah blah blah blah infoblah
-          blah blah info info infoblah blah blah blah info info infoblah blah
-          blah blah infoblah blah blah info info infoblah blah blah blah info
-          info infoblah blah blah blah infoblah blah blah info info infoblah
-          blah blah blah info info infoblah blah blah blah info.
-        </p>
+        <div className="flex justify-center items-center">
+          <div className="w-11/12 h-full bg-black bg-opacity-85 ">
+            <p className="text-2xl text-white text-center font-medium px-2">
+              blah blah blah info info infoblah blah blah blah info info
+              infoblah blah blah blah infoblah blah blah info info infoblah blah
+              blah blah info info infoblah blah blah blah infoblah blah blah
+              info info infoblah blah blah blah info info infoblah blah blah
+              blah infoblah blah blah info info infoblah blah blah blah info
+              info infoblah blah blah blah infoblah blah blah info info infoblah
+              blah blah blah info info infoblah blah blah blah infoblah blah
+              blah info info infoblah blah blah blah info info infoblah blah
+              blah blah info.
+            </p>
+          </div>
+        </div>
       </div>
       <div>
         <div className="flex justify-center items-center py-3 px-2">
