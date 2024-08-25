@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, createContext } from "react";
 import Maincontent from "@/components/maincontent";
 import { Searchbar } from "@/components/ui/Searchbar";
 import Sidebar from "@/components/ui/sidebar";
+import Policy from "./policy";
 const Home = () => {
   //nav bar logic///
 
@@ -11,10 +12,11 @@ const Home = () => {
       <div className="h-full w-full ">
         <Searchbar />
         <div
-          className="h-full w-full 
-         overflow-auto"
+          className="h-full w-11/12 
+         overflow-auto flex items-center"
         >
           <Maincontent />
+          <Policy />
         </div>
       </div>
     </div>

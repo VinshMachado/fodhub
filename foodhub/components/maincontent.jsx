@@ -126,7 +126,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${api}`, // API key
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -163,7 +163,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `${api}`, // API key
+            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -180,11 +180,6 @@ const maincontent = () => {
 
       // Update state with the URLs
       setvegurl(urlss);
-      console.log("vegthing");
-      console.log(url);
-      console.log(data); // Log the results array to verify its contents
-
-      console.log(pureveg); // Log the state to check if it's set correctly
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -222,7 +217,7 @@ const maincontent = () => {
           Nearby Restraunts
         </div>
         {/* near by*/}
-        <div className=" late-500 shadow-lg w-11/12 m-9 flex justify-center  rounded-md p-4  ">
+        <div className=" late-500 w-11/12 m-9 flex justify-center  rounded-md p-4  ">
           <Carousel className="h-1/4 w-10/12 flex justify-center m-4">
             <CarouselContent className="-ml-4">
               {nearbyplace &&
@@ -253,72 +248,76 @@ const maincontent = () => {
           </Carousel>
         </div>
         {/* seafood*/}
-        <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
-          Sea Food
+        <div className="pt-3 md:text-4xl text-3xl font-bold  h-20 mb-9">
+          Sea food
         </div>
-        <div className="late-500 shadow-lg w-11/12 h-56 m-9 flex justify-center rounded-md p-4">
-          <Carousel className="relative h-full w-full overflow-x-auto scroll-snap-x-mandatory flex">
-            <CarouselContent className="flex space-x-4">
+        <div className=" late-500 w-11/12 m-9 flex justify-center  rounded-md p-4  ">
+          <Carousel className="h-1/4 w-10/12 flex justify-center m-4 shadow-2xl rounded-lg">
+            <CarouselContent className="-ml-4">
               {seafood &&
                 seafood.map((data, i) => (
                   <CarouselItem
                     key={i}
-                    className="flex-shrink-0 w-1/3 md:w-1/2 lg:w-1/3 snap-start"
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="bg-black rounded-md flex items-center w-full overflow-hidden">
+                    <div className="shadow-xl rounded-md flex items-center   justify-evenly w-full overflow-hidden">
                       <img
                         src={seaurl[i]}
-                        className="object-cover h-32 w-40  rounded-sm m-4"
+                        className="object-cover h-32 shadow-md rounded-sm"
                         alt="Placeholder Image"
                       />
-                      <div className="h-full w-full text-white">
-                        <div className="text-xl pl-4">{data.name}</div>
-                        <div className="pl-4 text-sm">
+
+                      <div className="h-full w-full">
+                        <div className="text-lg pl-4 text-black  bg-white rounded-md p-2">
+                          {data.name}
+                        </div>
+                        <div className="pl-4 text-black text-sm  bg-gray-200 rounded-md p-2">
                           {data.location.address}
                         </div>
-                        <p className="text-orange-500 text-white mt-6 pl-3 text-xl">
-                          {data.closed_bucket}
-                        </p>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute top-1/2 left-0 transform -translate-y-1/2" />
-            <CarouselNext className="absolute top-1/2 right-0 transform -translate-y-1/2" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
 
         <div className="pt-3 h-10 md:text-4xl text-3xl font-bold mb-3 ">
           Pure Veg
         </div>
-        <div className="h-56 shadow-lg w-11/12 h-full m-9 mb-7 pb-10 flex justify-center rounded-md p-4">
-          <Carousel className="relative h-full w-full overflow-x-auto scroll-snap-x-mandatory flex">
-            <CarouselContent className="flex space-x-4">
+        <div className="h-64 pb-11 w-full flex justify-center items-center rounded-sm md:text-4xl text-lg bg-white p-4">
+          <Carousel className="h-full w-full flex justify-center m-4 overflow-hidden">
+            <CarouselContent className="flex w-full">
               {pureveg &&
                 pureveg.map((data, i) => (
                   <CarouselItem
                     key={i}
-                    className="flex-shrink-0 w-1/3 md:w-1/2 lg:w-1/3 snap-start"
+                    className="md:basis-1/2 lg:basis-1/3 text-2xl text-white flex flex-col items-center"
                   >
-                    <div className="bg-black rounded-md flex items-center h-full w-full overflow-hidden">
+                    <div
+                      onClick={() => {
+                        console.log(`hello ${data.id}`);
+                      }}
+                      className="bg-black rounded-md flex items-center justify-evenly w-full h-full overflow-hidden"
+                    >
                       <img
                         src={vegurl[i]}
-                        className="object-cover h-32 w-40"
+                        className="object-cover h-32 w-full"
                         alt="Placeholder Image"
                       />
+
                       <div className="flex flex-col justify-center items-start w-full h-full p-4">
-                        <div className="text-xl text-white">{data.name}</div>
-                        <div className="text-lg text-white">
-                          {data.location.address}
-                        </div>
+                        <div className="text-lg">{data.name}</div>
+                        <div className="text-sm">{data.location.address}</div>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute top-1/2 left-0 transform -translate-y-1/2" />
-            <CarouselNext className="absolute top-1/2 right-0 transform -translate-y-1/2" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         </div>
       </div>
