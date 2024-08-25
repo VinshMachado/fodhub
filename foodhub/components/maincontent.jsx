@@ -8,12 +8,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useContext, useState } from "react";
+import { useRouter } from "next/router";
 
 import Car from "./ui/car";
 
 const maincontent = () => {
   const api = "fsq3+wMRUlEe1lepib3pVtQ6vFfK+aC7Z6beD+5tUDvv17M= ";
+  const router = useRouter();
+
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
   const [pureveg, setpureveg] = useState([]);
@@ -204,7 +207,12 @@ const maincontent = () => {
       console.error("Error posting data:", error);
     }
   };
-
+  const navigate = async (fsq_id) => {
+    await router.push({
+      pathname: "/hotel",
+      query: { id: fsq_id },
+    });
+  };
   return (
     <div className="h-full w-full">
       {/* Main content area */}
@@ -224,6 +232,7 @@ const maincontent = () => {
                 nearbyplace.map((data, i) => (
                   <CarouselItem
                     key={i}
+                    onClick={() => navigate(data.fsq_id)}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
                     <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
@@ -258,6 +267,7 @@ const maincontent = () => {
                 seafood.map((data, i) => (
                   <CarouselItem
                     key={i}
+                    onClick={() => navigate(data.fsq_id)}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
                     <div className="shadow-xl rounded-md flex items-center   justify-evenly w-full overflow-hidden">
@@ -294,6 +304,7 @@ const maincontent = () => {
                 pureveg.map((data, i) => (
                   <CarouselItem
                     key={i}
+                    onClick={() => navigate(data.fsq_id)}
                     className="md:basis-1/2 lg:basis-1/3 text-2xl text-white flex flex-col items-center"
                   >
                     <div
