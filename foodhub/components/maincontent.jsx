@@ -14,10 +14,9 @@ import Car from "./ui/car";
 
 const maincontent = () => {
   const api = "fsq3+wMRUlEe1lepib3pVtQ6vFfK+aC7Z6beD+5tUDvv17M= ";
-  const [loading, setLoading] = useState(false);
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
-  const [pureveg, setpureveg] = useState(null);
+  const [pureveg, setpureveg] = useState([]);
   const [vegid, setvegid] = useState([]);
   const [vegurl, setvegurl] = useState([]);
   const [seafood, setseafood] = useState([]);
@@ -52,7 +51,6 @@ const maincontent = () => {
 
   //fetching data from api//
   const fetchImageUrl = async (fsq_id) => {
-    if (loading) return;
     try {
       const response = await axios.get(
         `https://api.foursquare.com/v3/places/${fsq_id}/photos?limit=1`,
@@ -80,7 +78,6 @@ const maincontent = () => {
     }
   };
   const nearbyinfo = async () => {
-    if (loading) return;
     try {
       const lati = userlocation.userlatitude;
       const longi = userlocation.userlongitude;
@@ -156,7 +153,6 @@ const maincontent = () => {
     }
   };
   const veginfo = async () => {
-    if (loading) return;
     try {
       const lati = userlocation.userlatitude;
       const longi = userlocation.userlongitude;
@@ -190,7 +186,6 @@ const maincontent = () => {
   };
 
   const ourdatabase = async () => {
-    if (loading) return;
     try {
       console.log(temp); // Ensure temp is an array
 
