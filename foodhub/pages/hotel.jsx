@@ -131,7 +131,7 @@ const Hotel = (props) => {
               comments.map((data, i) => (
                 <div
                   key={data.id}
-                  className="border border-gray-300 rounded-lg p-4 mb-4 shadow-sm"
+                  className="border  rounded-lg p-4 mb-4 shadow-sm"
                 >
                   <div className="flex items-center mb-2">
                     <div className="text-lg font-semibold text-gray-800">
