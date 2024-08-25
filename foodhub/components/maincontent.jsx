@@ -221,7 +221,7 @@ const maincontent = () => {
 
         <Car />
 
-        <div className="pt-3 md:text-4xl text-3xl font-bold">
+        <div className="pt-3 mt-2 md:text-4xl text-3xl font-bold">
           Nearby Restraunts
         </div>
         {/* near by*/}
@@ -235,16 +235,19 @@ const maincontent = () => {
                     onClick={() => navigate(data.fsq_id)}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="bg-black rounded-md flex items-center justify-evenly fifull w-full overflow-hidden">
+                    <div className="bg-black rounded-md flex items-center justify-evenly  w-full overflow-hidden">
                       <img
                         src={url[i]}
                         className="object-cover h-32  "
                         alt="Placeholder Image"
                       />
 
-                      <div className="h-full w-full">
-                        <div className="text-lg pl-4"> {data.name}</div>
-                        <div className="pl-4   text-sm">
+                      <div className="h-full w-full ">
+                        <div className="text-lg pl-4 font-semibold shadow-orange-800 shadow-lg">
+                          {" "}
+                          {data.name}
+                        </div>
+                        <div className="pl-4   text-sm shadow-white font-semibold shadow-lg">
                           {data.location.address}
                         </div>
                       </div>
@@ -257,7 +260,7 @@ const maincontent = () => {
           </Carousel>
         </div>
         {/* seafood*/}
-        <div className="pt-3 md:text-4xl text-3xl font-bold  h-20 mb-9">
+        <div className="pt-3 md:text-4xl text-3xl font-bold  h-10 mb-3">
           Sea food
         </div>
         <div className=" late-500 w-11/12 m-9 flex justify-center  rounded-md p-4  ">
@@ -270,18 +273,18 @@ const maincontent = () => {
                     onClick={() => navigate(data.fsq_id)}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="shadow-xl rounded-md flex items-center   justify-evenly w-full overflow-hidden">
+                    <div className="shadow-xl snap-end rounded-md flex items-center bg-orange-300  justify-evenly w-full overflow-hidden">
                       <img
                         src={seaurl[i]}
-                        className="object-cover h-32 shadow-md rounded-sm"
+                        className="object-cover h-32  shadow-md rounded-sm"
                         alt="Placeholder Image"
                       />
 
                       <div className="h-full w-full">
-                        <div className="text-lg pl-4 text-black  bg-white rounded-md p-2">
+                        <div className="text-lg pl-4 font-semibold text-black shadow-sm rounded-md p-2">
                           {data.name}
                         </div>
-                        <div className="pl-4 text-black text-sm  bg-gray-200 rounded-md p-2">
+                        <div className="pl-4 text-black text-sm font-semibold shadow-sm  rounded-md p-2">
                           {data.location.address}
                         </div>
                       </div>
@@ -319,9 +322,13 @@ const maincontent = () => {
                         alt="Placeholder Image"
                       />
 
-                      <div className="flex flex-col justify-center items-start w-full h-full p-4">
-                        <div className="text-lg">{data.name}</div>
-                        <div className="text-sm">{data.location.address}</div>
+                      <div className="flex flex-col  justify-center items-start w-full h-full p-4">
+                        <div className="text-lg font-semibold ">
+                          {data.name}
+                        </div>
+                        <div className="text-sm font-semibold">
+                          {data.location.address}
+                        </div>
                       </div>
                     </div>
                   </CarouselItem>

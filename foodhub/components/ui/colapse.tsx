@@ -20,7 +20,7 @@ export function CollapsibleDemo() {
     >
       {/* Header Section */}
       <div className="flex border-3 items-center justify-between px-4">
-        <h4 className="text-[1rem] font-medium">
+        <h4 className="text-[1rem] text-white font-medium">
           Connections or whatever it’s called
         </h4>
         <CollapsibleTrigger asChild>
@@ -33,21 +33,21 @@ export function CollapsibleDemo() {
 
       {/* Main Content Section */}
       <div className="flex flex-col space-y-2 py-2 px-4">
-        <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-pink-400 hover:scale-105 hover:shadow-lg">
+        <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-gray-500 hover:scale-105 hover:shadow-lg">
           GitHub
           <span className="absolute inset-0 rounded-md border border-transparent" />
         </button>
 
         <CollapsibleContent className="flex flex-col space-y-2 ">
-          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-pink-400 hover:scale-105 hover:shadow-lg">
+          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-gray-500 hover:scale-105 hover:shadow-lg">
             insts
             <span className="absolute inset-0 rounded-md border border-transparent" />
           </button>
-          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-pink-400 hover:scale-105 hover:shadow-lg">
+          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-gray-500 hover:scale-105 hover:shadow-lg">
             youtube
             <span className="absolute inset-0 rounded-md border border-transparent" />
           </button>
-          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-pink-400 hover:scale-105 hover:shadow-lg">
+          <button className="relative rounded-md w-full border px-4 py-2 font-mono text-sm shadow-sm transition-transform transition-shadow transition-colors duration-300 ease-in-out bg-black text-white hover:bg-gray-500 hover:scale-105 hover:shadow-lg">
             twitter
             <span className="absolute inset-0 rounded-md border border-transparent" />
           </button>
