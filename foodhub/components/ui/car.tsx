@@ -41,12 +41,12 @@ const Car: React.FC = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ${
+            className={`absolute  inset-0 flex items-center justify-center transition-opacity duration-700 ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           >
             <span className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
-              <img className="h-full w-full" src={`${imgg[index + 1]}`} />
+              <img className="h-full w-full " src={`${imgg[index + 1]}`} />
             </span>
           </div>
         ))}
