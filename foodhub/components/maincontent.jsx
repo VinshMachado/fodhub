@@ -13,7 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import Car from "./ui/car";
 
 const maincontent = () => {
-  const api = "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=";
+  const api = "fsq3+wMRUlEe1lepib3pVtQ6vFfK+aC7Z6beD+5tUDvv17M= ";
   //consists all the usefull data//
   const [nearbyplace, setnearbyplace] = useState([]);
   const [pureveg, setpureveg] = useState([]);
@@ -126,7 +126,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+            Authorization: `${api}`, // API key
           },
           params: {
             ll: `${lati},${longi}`,
@@ -163,7 +163,7 @@ const maincontent = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "fsq3OY0Bk2YURDNuzKDONFIAh98s7uF2vVGo64Vhe5k7RZw=", // API key
+            Authorization: `${api}`, // API key
           },
           params: {
             ll: `${lati},${longi}`,
