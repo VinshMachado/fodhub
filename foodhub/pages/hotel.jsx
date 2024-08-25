@@ -8,7 +8,7 @@ const Hotel = (props) => {
   // Array of texts for each carousel slide
   const router = useRouter();
   const [hoteldata, setdata] = useState({ name: "", address: "", open: "" });
-  const [comments, setComments] = useState();
+  const [comments, setComments] = useState(null);
   const api = "fsq3+wMRUlEe1lepib3pVtQ6vFfK+aC7Z6beD+5tUDvv17M= ";
 
   const fsq_id = router.query.id;
@@ -18,7 +18,8 @@ const Hotel = (props) => {
     try {
       const response = await axios.get("https://dummyjson.com/comments");
       const data = response.data;
-      console.log(data);
+      console.log(data.comments);
+      setComments(data.comments);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -111,7 +112,7 @@ const Hotel = (props) => {
             src={imageUrl}
           />
         </div>
-        <div className="p-6 h-full w-1/2">
+        <div className="p-6 h-screen w-full">
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">
             {hoteldata.name}
           </h2>
@@ -120,10 +121,33 @@ const Hotel = (props) => {
             onClick={() => {
               router.push("/");
             }}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
+            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300"
           >
             {hoteldata.open}
           </button>
+          <div className="m-20  pl-2 h-10 w-full">Reviews</div>
+          <div className=" h-full w-full overflow-auto">
+            {comments ? (
+              comments.map((data, i) => (
+                <div
+                  key={data.id}
+                  className="border border-gray-300 rounded-lg p-4 mb-4 shadow-sm"
+                >
+                  <div className="flex items-center mb-2">
+                    <div className="text-lg font-semibold text-gray-800">
+                      {data.user.username}
+                    </div>
+                    <div className="ml-2 text-sm text-gray-500">
+                      {data.id}days ago
+                    </div>
+                  </div>
+                  <p className="text-gray-700">{data.body}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-black">Loading comments...</p>
+            )}
+          </div>
         </div>
       </div>
     </>

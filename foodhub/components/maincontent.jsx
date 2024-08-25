@@ -273,7 +273,7 @@ const maincontent = () => {
                     onClick={() => navigate(data.fsq_id)}
                     className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                   >
-                    <div className="shadow-xl snap-end rounded-md flex items-center bg-orange-300  justify-evenly w-full overflow-hidden">
+                    <div className="shadow-xl snap-end rounded-md flex items-center   justify-evenly w-full overflow-hidden">
                       <img
                         src={seaurl[i]}
                         className="object-cover h-32  shadow-md rounded-sm"
@@ -281,10 +281,10 @@ const maincontent = () => {
                       />
 
                       <div className="h-full w-full">
-                        <div className="text-lg pl-4 font-semibold text-black shadow-sm rounded-md p-2">
-                          {data.name}
+                        <div className="text-lg font-bold pl-4  text-black rounded-md p-2">
+                          <span> {data.name}</span>
                         </div>
-                        <div className="pl-4 text-black text-sm font-semibold shadow-sm  rounded-md p-2">
+                        <div className="pl-4 text-black text-sm font-semibold  rounded-md p-2">
                           {data.location.address}
                         </div>
                       </div>
