@@ -59,7 +59,7 @@ async function findRestaurantsByNames(names) {
     // Set up Fuse.js options for fuzzy search
     const fuse = new Fuse(restaurantNames, {
       includeScore: true,
-      threshold: 0.2, // Adjust threshold as needed (0.0 is exact match, 1.0 is very loose)
+      threshold: 0.0, // Adjust threshold as needed (0.0 is exact match, 1.0 is very loose)
     });
 
     // Perform fuzzy search for each unique name

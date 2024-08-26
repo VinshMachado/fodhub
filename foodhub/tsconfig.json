@@ -25,7 +25,8 @@
     "components/maincontent.jsx",
     "components/maincontent.jsx",
     "components/ui/Pureveg.jsx",
-    "pages/hotel.jsx"
+    "pages/hotel.jsx",
+    "components/ui/Searchbar.tsx"
   ],
   "exclude": ["node_modules"]
 }

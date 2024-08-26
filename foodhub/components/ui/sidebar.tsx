@@ -8,7 +8,7 @@ const sidebar = () => {
   const [iconName, setIconName] = useState([
     "Home",
     "Location",
-    "liked",
+    "Brokie",
     "Profile",
     "Sponsors",
     "Logout",

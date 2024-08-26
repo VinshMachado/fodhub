@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Profilething from "./Profilething";
 import { Input } from "@/components/ui/input";
-
+import Router, { useRouter } from "next/router";
 import MenuCheckbox from "./checkbox";
 import Menu from "./menu";
 
 export const Searchbar = () => {
+  const router = useRouter();
+  const [input, setinput] = useState("");
+  //to set change//
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setinput(e.target.value);
+    console.log(input);
+  };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      // Perform action when Enter key is pressed
+
+      nav();
+    }
+  };
+  // to push to page//
+  const nav = () => {
+    router.push({ pathname: "/Searching", query: { search: input } });
+  };
   return (
     <div className="h-auto w-full ">
       <div className="w-full bg-orange-400 h-16 flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16">
@@ -22,11 +40,14 @@ export const Searchbar = () => {
               type="text"
               placeholder="Search Restaurants Or Dishes"
               className="pr-10 h-11 bg-white"
+              onChange={handleChange}
+              // Ensure the value is set to the input state
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3">
               <svg
                 className="w-5 h-5 text-gray-500"
                 aria-hidden="true"
+                onClick={nav}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 20 20"

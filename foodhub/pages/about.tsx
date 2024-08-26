@@ -78,40 +78,14 @@ const About = () => {
           info on our website
         </div>
         <div className="flex justify-center items-center">
-          <div className="w-11/12 h-full bg-[#750f0f] bg-opacity-55 ">
-            <p className="text-2xl text-white text-center font-medium px-2">
-              blah blah blah info info infoblah blah blah blah info info
-              infoblah blah blah blah infoblah blah blah info info infoblah blah
-              blah blah info info infoblah blah blah blah infoblah blah blah
-              info info infoblah blah blah blah info info infoblah blah blah
-              blah infoblah blah blah info info infoblah blah blah blah info
-              info infoblah blah blah blah infoblah blah blah info info infoblah
-              blah blah blah info info infoblah blah blah blah infoblah blah
-              blah info info infoblah blah blah blah info info infoblah blah
-              blah blah info.
+          <div className="w-full h-full  shadow-lg  ">
+            <p className="text-4xl text-orange-500 text-center font-medium px-2">
+              FoodMaps
             </p>
           </div>
         </div>
       </div>
-      <div>
-        <div className="flex justify-center items-center py-3 px-2">
-          <a
-            href="#_"
-            className="relative inline-flex border-[1.8px]  hover:text-black border-white items-center justify-center h-60 w-72 px-6 py-3 overflow-hidden font-bold text-white rounded-lg hover:shadow-white shadow-2xl group"
-          >
-            <span className="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-[#801414] via-[#540b0f] to-[#170102] group-hover:opacity-100"></span>
-            <span className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>
-            <span className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent opacity-5"></span>
-            <span className="absolute bottom-0 left-0 w-4 h-full bg-gradient-to-r from-white to-transparent opacity-5"></span>
-            <span className="absolute bottom-0 right-0 w-4 h-full bg-gradient-to-l from-white to-transparent opacity-5"></span>
-            <span className="absolute inset-0 w-full h-full border-2 border-white rounded-md opacity-20"></span>
-            <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-15"></span>
-            <span className="relative font-bold text-lg">
-              press to go to our website
-            </span>
-          </a>
-        </div>
-      </div>
+      <div></div>
     </div>
   );
 };
