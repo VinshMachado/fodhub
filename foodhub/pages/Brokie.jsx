@@ -35,7 +35,7 @@ const Brokie = () => {
           </div>
         </div>
         <p className="text-sm mt-2 text-red-700">Results</p>
-        <div className="ml-4 m-10 w-11/12 hover:shadow-orange-400 mt-3 bg-white rounded-lg shadow-md overflow-hidden flex items-center">
+        <div className="ml-4 m-10 w-11/12  mt-3 bg-white rounded-lg shadow-md overflow-hidden flex items-center">
           <img
             src={"/images.png"}
             alt={"title"}

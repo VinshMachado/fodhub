@@ -11,7 +11,7 @@ const Hotel = (props) => {
   const api = "fsq3sE6eTQHLHGZUK9axFSjHtgqElszAiKUBrIgn3jXlUCc=";
 
   const fsq_id = router.query.id;
-  const [imageUrl, setImageUrl] = useState("/images/loading.png"); // Initial loading image
+  const [imageUrl, setImageUrl] = useState("/images.png"); // Initial loading image
 
   // Fetch comments
   const fetchcomment = async () => {
@@ -91,7 +91,7 @@ const Hotel = (props) => {
 
   return (
     <>
-      <div className="bg-white shadow-lg h-screen rounded-lg overflow-hidden sm:flex w-full max-w-sm">
+      <div className="bg-white shadow-lg h-auto rounded-lg overflow-show sm:flex w-full max-w-sm">
         <div>
           <img
             alt="Hotel Image"
@@ -104,7 +104,7 @@ const Hotel = (props) => {
             {hoteldata.name}
           </h2>
           <p className="text-gray-600 mb-4">{hoteldata.address}</p>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-lg  transition duration-300">
             {hoteldata.open}
           </button>
           <div className="m-20 pl-2 h-10 w-full">Reviews</div>

@@ -111,6 +111,7 @@ const MainContent = () => {
       setNearbyplace(nearbyPlaces);
       setSeafood(seafoodPlaces);
       setPureveg(vegPlaces);
+      console.log(vegPlaces);
 
       const nearbyUrls = await Promise.all(
         nearbyPlaces.map((place) => fetchImageUrl(place.fsq_id))
@@ -203,6 +204,9 @@ const MainContent = () => {
                       </div>
                       <div className="pl-4 text-black text-sm font-semibold rounded-md p-2">
                         {data.location.address}
+                      </div>
+                      <div className=" text-black font-mono pl-4 text-sm  ">
+                        {data.distance}mts
                       </div>
                     </div>
                   </div>
