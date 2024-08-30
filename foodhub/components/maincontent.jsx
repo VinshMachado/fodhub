@@ -132,10 +132,10 @@ const MainContent = () => {
 
   //navigate to other thing
 
-  const navigate = async (fsq_id) => {
+  const navigate = async (fsq_id, name) => {
     await router.push({
       pathname: "/hotel",
-      query: { id: fsq_id },
+      query: { id: fsq_id, name: name },
     });
   };
 
@@ -153,7 +153,7 @@ const MainContent = () => {
               {nearbyplace.map((data, i) => (
                 <CarouselItem
                   key={i}
-                  onClick={() => navigate(data.fsq_id)}
+                  onClick={() => navigate(data.fsq_id, data.name)}
                   className="pl-4 md:basis-1/2 lg:basis-1/3 text-2xl text-white"
                 >
                   <div className="bg-black rounded-md flex items-center justify-evenly w-full overflow-hidden">

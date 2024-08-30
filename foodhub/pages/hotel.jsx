@@ -8,9 +8,11 @@ const Hotel = (props) => {
   const router = useRouter();
   const [hoteldata, setdata] = useState({ name: "", address: "", open: "" });
   const [comments, setComments] = useState(null);
+  const [name, setname] = useState();
   const api = "fsq3sE6eTQHLHGZUK9axFSjHtgqElszAiKUBrIgn3jXlUCc=";
 
   const fsq_id = router.query.id;
+
   const [imageUrl, setImageUrl] = useState("/images.png"); // Initial loading image
 
   // Fetch comments
@@ -18,7 +20,6 @@ const Hotel = (props) => {
     try {
       const response = await axios.get("https://dummyjson.com/comments");
       const data = response.data;
-      setComments(data.comments);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
@@ -69,14 +70,32 @@ const Hotel = (props) => {
         address: data.location.formatted_address,
         open: data.closed_bucket,
       });
+      ourDatabase(data.name);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   // useEffect for fetching data when fsq_id changes
+
+  const ourDatabase = async (namething) => {
+    try {
+      console.log(name + ":name");
+      const response = await axios.get(
+        `http://localhost:5000/search?search=${namething}`
+      );
+      const data = response.data;
+      console.log(data[0].reviews);
+      setComments(data[0].reviews);
+      return data; // Optionally return the data for further use
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+      throw error; // Optionally rethrow the error for higher-level error handling
+    }
+  };
   useEffect(() => {
     if (fsq_id) {
+      console.log("Fetching details and comments for fsq_id:", fsq_id);
       details(fsq_id);
       fetchcomment();
 
@@ -86,8 +105,10 @@ const Hotel = (props) => {
       };
 
       getImageUrl();
+
+      setname(hoteldata.name);
     }
-  }, [fsq_id]); // This will only trigger the API calls when fsq_id changes
+  }, [fsq_id]);
 
   return (
     <>
@@ -117,13 +138,13 @@ const Hotel = (props) => {
                 >
                   <div className="flex items-center mb-2">
                     <div className="text-lg font-semibold text-gray-800">
-                      {data.user.username}
+                      {data.author_name}
                     </div>
                     <div className="ml-2 text-sm text-gray-500">
-                      {data.id} days ago
+                      {data.relative_time_description}
                     </div>
                   </div>
-                  <p className="text-gray-700">{data.body}</p>
+                  <p className="text-gray-700">{data.text}</p>
                 </div>
               ))
             ) : (

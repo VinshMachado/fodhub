@@ -120,7 +120,7 @@ const signup = () => {
         </button>
         <h2>
           Already have an account?
-          <a href="www.youtube.com" className="text-blue-800">
+          <a href="/login" className="text-blue-800">
             {" "}
             Login
           </a>

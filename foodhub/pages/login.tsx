@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
+import Router, { useRouter } from "next/router";
 
 const index = () => {
+  const router = useRouter();
   //make hide or show pass//
   const [show, setshow] = useState(false);
   const changeshow = () => {
@@ -36,6 +38,11 @@ const index = () => {
       }
     );
     const data = await responce.json();
+    if (data.success == false) {
+      alert("ckeck your password and username");
+    } else {
+      router.push("/");
+    }
     console.log(data);
   };
   //accepting details//

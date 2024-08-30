@@ -22,13 +22,13 @@ const About = () => {
       <div className="flex flex-col lg:flex-row justify-evenly items-center gap-6">
         <div className=" hover:bg-orange-500 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-black md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-500">
           <img
-            src="/loginBg.jpg"
-            className="mb-1 h-60 rounded-full w-full px-3 py-3 =  duration-700 ease-in-out hover:shadow-lg"
+            src="/1701455732972.jpg"
+            className="mb-1 h-auto rounded-full w-60 px-3 py-3 duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              sion
+              Sion Lobo
             </span>
             <p className="text-center text-sm p-2 text-white">
               In addition to their technical prowess, Sion is a problem-solver.
@@ -70,7 +70,7 @@ const About = () => {
           />
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              Roldan
+              Roldan D'souza
             </span>
             <p className="text-center text-sm p-4 text-white">
               Roldan has extensive experience with a wide range of back-end

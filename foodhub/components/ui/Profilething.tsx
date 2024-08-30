@@ -7,7 +7,6 @@ const Profilething: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
 
   return (
     <div className="  bg-orange-400">
