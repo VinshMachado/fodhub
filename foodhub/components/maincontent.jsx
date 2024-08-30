@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -170,6 +169,9 @@ const MainContent = () => {
                       <div className="pl-4 text-sm shadow-white font-semibold shadow-lg">
                         {data.location.address}
                       </div>
+                      <p className="text-white  font-mono pl-4 text-sm ">
+                        {data.distance}m
+                      </p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -206,7 +208,9 @@ const MainContent = () => {
                         {data.location.address}
                       </div>
                       <div className=" text-black font-mono pl-4 text-sm  ">
-                        {data.distance}mts
+                        <p className="text-red-600  font-bold">
+                          {data.distance}m
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -242,6 +246,9 @@ const MainContent = () => {
                       </div>
                       <div className="pl-4 text-black text-sm font-semibold rounded-md p-2">
                         {data.location.address}
+                        <p className="text-red-600  font-bold">
+                          {data.distance}m
+                        </p>
                       </div>
                     </div>
                   </div>

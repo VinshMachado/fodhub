@@ -80,7 +80,12 @@ export const Searchbar = () => {
             About Us
           </button>
 
-          <div className="bg-orange-400">
+          <div
+            className="bg-orange-400"
+            onClick={() => {
+              router.push("/signup");
+            }}
+          >
             <Profilething />
           </div>
         </div>

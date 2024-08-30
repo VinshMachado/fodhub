@@ -28,28 +28,35 @@ const About = () => {
           />
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              sionn
+              sion
             </span>
-            <p className="text-center text-white">
-              blah blah blah info info infoblah blah blah blah info info
-              infoblah blah blah blah info info info.
+            <p className="text-center text-sm p-2 text-white">
+              In addition to their technical prowess, Sion is a problem-solver.
+              They tackle challenges head-on and come up with innovative
+              solutions that enhance the overall user experience. They are also
+              continuously learning and staying up-to-date with the latest
+              trends and best practices in front-end development, which is
+              evident in the quality of their work.
             </p>
           </div>
           <CollapsibleDemo />
         </div>
         <div className=" hover:bg-orange-500 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-black md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-500">
           <img
-            src="/loginBg.jpg"
-            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
+            src="/1713638190478.jpg"
+            className="mb-1 h-auto w-60 px-3 py-3 rounded-full  duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              machado
+              Vinish Machado
             </span>
-            <p className="text-center text-white">
-              blah blah blah info info infoblah blah blah blah info info
-              infoblah blah blah blah info info info.
+            <p className="text-center text-sm p-4 text-white">
+              Vinish Machado possesses an exceptional command of front-end
+              technologies, including HTML, CSS, JavaScript, and modern
+              frameworks like React.js, Angular, and Vue.js. Their code is not
+              only clean and efficient but also scalable and maintainable, "AMD
+              IS THE GOAT"-him
             </p>
           </div>
           <CollapsibleDemo />
@@ -57,17 +64,19 @@ const About = () => {
 
         <div className=" hover:bg-orange-500 hover:bg-opacity-90 duration-700   bg-opacity-35  bg-black md:mb-3 w-[22rem] h-[40rem] cursor-pointer flex flex-col justify-center items-center text-2xl rounded-lg transition-transform  ease-in-out transform hover:scale-95 sm:hover:scale-105 shadow-2xl hover:shadow-red-500">
           <img
-            src="/loginBg.jpg"
-            className="mb-1 h-60 w-full px-3 py-3 rounded-lg  duration-700 ease-in-out hover:shadow-lg"
+            src="/WhatsApp Image 2024-08-30 at 8.40.43 PM.jpeg"
+            className="mb-1 h-auto rounded-full w-60 px-3 py-3 duration-700 ease-in-out hover:shadow-lg"
             alt="Login Background"
           />
           <div className="flex flex-col items-center">
             <span className="flex justify-center text-3xl font-semibold py-1 text-white">
-              roldan
+              Roldan
             </span>
-            <p className="text-center text-white">
-              blah blah blah info info infoblah blah blah blah info info
-              infoblah blah blah blah info info info.
+            <p className="text-center text-sm p-4 text-white">
+              Roldan has extensive experience with a wide range of back-end
+              technologies, including but not limited to Node.js, Python, Java,
+              Ruby, and PHP. They are well-versed in working with various
+              frameworks like Express.js, Django, Spring, and Ruby on Rails
             </p>
           </div>
           <CollapsibleDemo />

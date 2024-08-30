@@ -4,7 +4,7 @@ import { Searchbar } from "@/components/ui/Searchbar";
 import Sidebar from "@/components/ui/sidebar";
 import Profilepage from "../components/ui/Profile";
 
-const Home = () => {
+const profile = () => {
   //nav bar logic///
 
   return (
@@ -16,11 +16,11 @@ const Home = () => {
           className="h-full w-full 
          overflow-auto"
         >
-          <Maincontent />
+          <Profilepage />
         </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default profile;
