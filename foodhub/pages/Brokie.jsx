@@ -75,11 +75,11 @@ const Brokie = () => {
             Price Range:
           </h1>
           <Slider
-            defaultValue={[30]}
+            defaultValue={[30]} // Initial value on first render
+            value={sliderValue} // Controlled value
             max={1000}
             step={1}
-            value={sliderValue} // Step 4: Pass the current value
-            onValueChange={handleSliderChange} // Step 4: Pass the change handler
+            onValueChange={handleSliderChange} // Handle value change
             className="w-full max-w-xs"
           />
         </div>

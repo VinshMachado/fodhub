@@ -85,8 +85,8 @@ const Hotel = (props) => {
         `http://localhost:5000/search?search=${namething}`
       );
       const data = response.data;
-      console.log(data[0].reviews);
-      setComments(data[0].reviews);
+
+      setComments(data[0]?.reviews);
       return data; // Optionally return the data for further use
     } catch (error) {
       console.error("Error fetching comments:", error);
